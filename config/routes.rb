@@ -1,6 +1,9 @@
 Drxfer::Application.routes.draw do
-  resources :agreements
 
+  resources :agreements
+  
+  resources :transfers # TODO: Nest in Agreements
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

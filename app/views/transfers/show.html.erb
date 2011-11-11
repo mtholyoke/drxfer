@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Agreement:</b>
+  <%= @transfer.agreement_id %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @transfer.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_transfer_path(@transfer) %> |
+<%= link_to 'Back', transfers_path %>
