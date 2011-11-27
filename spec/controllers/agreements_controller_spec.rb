@@ -26,6 +26,11 @@ describe AgreementsController do
   def valid_attributes
     { :name => "Agreement name"}
   end
+  
+  before (:each) do
+    @user = FactoryGirl.create(:user)
+    sign_in @user
+  end
 
   describe "GET index" do
     it "assigns all agreements as @agreements" do

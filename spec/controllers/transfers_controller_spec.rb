@@ -27,6 +27,11 @@ describe TransfersController do
     {}
   end
 
+  before (:each) do
+    @user = FactoryGirl.create(:user)
+    sign_in @user
+  end
+
   describe "GET index" do
     it "assigns all transfers as @transfers" do
       transfer = Transfer.create! valid_attributes
