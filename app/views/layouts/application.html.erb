@@ -2,14 +2,15 @@
 <html>
 <head>
   <title>Drxfer</title>
-  <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag :main %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
-<p>
+<div id="wrapper">
+<p id="session">
   <% if user_signed_in? %>
-    Signed in as <%= current_user.username %>
+    Signed in as <%= current_user.first_name %> <%= current_user.last_name %>
   <% else %>
     Not signed in
   <% end %>
@@ -17,5 +18,6 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>  
 <%= yield %>
+</div>
 </body>
 </html>

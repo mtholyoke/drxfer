@@ -2,24 +2,22 @@
 
 <table>
   <tr>
+    <th>Admin</th>
+    <th>Name</th>
     <th>Username</th>
     <th>Email</th>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Admin</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @users.each do |user| %>
-  <tr>
+  <tr class="<%= user.admin? ? 'admin' : '' %>">
+    <td><%= user.admin %></td>
+    <td><%= user.first_name %> <%= user.last_name %></td>
     <td><%= user.username %></td>
     <td><%= user.email %></td>
-    <td><%= user.first_name %></td>
-    <td><%= user.last_name %></td>
-    <td><%= user.admin %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Edit Admin Status', edit_user_path(user) %></td>
+    <td><%= link_to 'Remove User', user, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
