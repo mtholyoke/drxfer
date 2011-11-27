@@ -2,8 +2,8 @@ Drxfer::Application.routes.draw do
 
   devise_for :users
   
+  resources :users
   resources :agreements
-  
   resources :transfers # TODO: Nest in Agreements
   
   # The priority is based upon order of creation:
