@@ -7,6 +7,13 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+<p>
+  <% if user_signed_in? %>
+    Signed in as <%= current_user.username %>
+  <% else %>
+    Not signed in
+  <% end %>
+</p>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>  
 <%= yield %>
