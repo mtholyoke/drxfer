@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>Name:</b>
   <%= @agreement.name %>
@@ -8,6 +6,11 @@
 <p>
   <b>Description:</b>
   <%= @agreement.description %>
+</p>
+
+<p>
+  <b>Users:</b>
+  <%= @agreement.users.collect{|u| link_to(u.full_name, edit_user_url(u))}.join(', ').html_safe %>
 </p>
 
 

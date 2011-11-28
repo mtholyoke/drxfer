@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Drxfer</title>
-  <%= stylesheet_link_tag :main %>
+  <title>Digital Records Transfer System</title>
+  <%= stylesheet_link_tag 'styles' %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
@@ -15,8 +15,9 @@
     Not signed in
   <% end %>
 </p>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>  
+<h1><%= link_to "Digital Records Transfer System", root_url %></h1>
+<p id="notice"><%= notice %></p>
+<p id="alert"><%= alert %></p>  
 <%= yield %>
 </div>
 </body>

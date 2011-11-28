@@ -1,9 +1,9 @@
-<h1>Listing agreements</h1>
+<h2>Transfer Agreements</h2>
 
 <table>
   <tr>
     <th>Name</th>
-    <th>Description</th>
+    <th>Users</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,7 +12,7 @@
 <% @agreements.each do |agreement| %>
   <tr>
     <td><%= agreement.name %></td>
-    <td><%= agreement.description %></td>
+    <th><%= agreement.users_summary %></td>
     <td><%= link_to 'Show', agreement %></td>
     <td><%= link_to 'Edit', edit_agreement_path(agreement) %></td>
     <td><%= link_to 'Destroy', agreement, :confirm => 'Are you sure?', :method => :delete %></td>

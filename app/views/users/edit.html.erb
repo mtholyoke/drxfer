@@ -19,9 +19,20 @@
   </p>  
   
   <div class="field">
-    <%= f.label :admin %><br />
+    <%= f.label :admin, "Transfer Form Admin" %>
     <%= f.check_box :admin %>
   </div>
+  
+  <h3>Agreements</h3>
+  <% if @user.agreements.size == 0 %>
+    None
+  <% else %>
+    <ol>
+    <% @user.agreements.each do |agreement| %>
+      <li><%= link_to agreement.name, agreement %></li>
+    <% end %>
+    </ol>
+  <% end%>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -6,6 +6,7 @@
     <th>Name</th>
     <th>Username</th>
     <th>Email</th>
+    <th>Agreements</th>
     <th></th>
     <th></th>
   </tr>
@@ -16,7 +17,8 @@
     <td><%= user.first_name %> <%= user.last_name %></td>
     <td><%= user.username %></td>
     <td><%= user.email %></td>
-    <td><%= link_to 'Edit Admin Status', edit_user_path(user) %></td>
+    <td><%= user.agreements.count %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Remove User', user, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

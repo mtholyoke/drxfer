@@ -25,6 +25,7 @@ class AgreementsController < ApplicationController
   # GET /agreements/new.xml
   def new
     @agreement = Agreement.new
+    @users = User.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,12 +36,16 @@ class AgreementsController < ApplicationController
   # GET /agreements/1/edit
   def edit
     @agreement = Agreement.find(params[:id])
+    @users = User.all
   end
 
   # POST /agreements
   # POST /agreements.xml
   def create
     @agreement = Agreement.new(params[:agreement])
+    @agreement.attributes = {'user_ids' => []}.merge(params[:agreement] || {})
+    
+    @users = User.all
 
     respond_to do |format|
       if @agreement.save
@@ -57,6 +62,9 @@ class AgreementsController < ApplicationController
   # PUT /agreements/1.xml
   def update
     @agreement = Agreement.find(params[:id])
+    @agreement.attributes = {'user_ids' => []}.merge(params[:agreement] || {})
+
+    @users = User.all
 
     respond_to do |format|
       if @agreement.update_attributes(params[:agreement])

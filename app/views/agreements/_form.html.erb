@@ -19,6 +19,20 @@
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
+  
+  <fieldset id="users_fs">
+  <legend>Users</legend>
+  <p>
+  <% @users.each do |user| %>
+    <%= check_box_tag :user_ids,  
+                      user.id,  
+                      @agreement.users.include?(user),  
+                      :name => 'agreement[user_ids][]' %>  	
+  	<%= f.label :user_ids, user.full_name %><br />  
+  <% end %>
+  </p>
+  </fieldset>
+    
   <div class="actions">
     <%= f.submit %>
   </div>
