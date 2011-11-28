@@ -1,10 +1,16 @@
 require 'digest/md5'
+require 'fileutils'
 
 class Attachment < ActiveRecord::Base
   belongs_to :transfer
   mount_uploader :asset, AttachmentUploader
 
-  before_save :update_asset_attributes, :calculate_md5_hash
+  before_save :update_asset_attributes, :calculate_md5_hash, :transfer_file
+  after_save :verify_copy, :verify_md5_hash
+  
+  def destination
+    transfer.destination_folder + '/' + File.basename(asset.current_path)
+  end
   
   private
   
@@ -18,6 +24,25 @@ class Attachment < ActiveRecord::Base
   def calculate_md5_hash
     if asset.present?
       self.md5 = Digest::MD5.hexdigest(File.read(asset.current_path))
+    end
+  end
+  
+  def transfer_file
+    if asset.present?
+      FileUtils.mkdir_p(transfer.destination_folder) unless File.exist?(transfer.destination_folder)
+      FileUtils.cp(asset.current_path, destination)
+    end
+  end
+  
+  def verify_copy
+    raise "File not copied successfully" unless File.exist? destination
+  end
+  
+  def verify_md5_hash
+    unless md5.eql?(Digest::MD5.hexdigest(File.read(destination)))
+      raise "MD5 hash of destination does not match intial upload. File may not have copied successfully." +
+            "Upload: #{md5} / " +
+            "Destination: #{Digest::MD5.hexdigest(File.read(destination))}" 
     end
   end
   

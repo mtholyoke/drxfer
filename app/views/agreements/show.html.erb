@@ -31,7 +31,7 @@
       file<%= transfer.attachments.count != 1 ? 's' : '' %><% if transfer.attachments.size > 0 %>,
         <%= number_to_human_size(transfer.attachments.sum(:file_size)) %>      
       <% end %>
-      <% if transfer.description %>
+      <% if transfer.description && transfer.description.strip.length > 0 %>
         (<i><%= truncate(transfer.description, :length => 60, :separator => ' ') %></i>)
       <% end %>
     </li>

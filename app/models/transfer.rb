@@ -14,4 +14,9 @@ class Transfer < ActiveRecord::Base
     ' by ' + first_name + ' ' + last_name
   end
   
+  def destination_folder
+    return nil unless agreement.folder
+    agreement.folder.path + '/' + self.created_at.strftime("%Y-%m-%d_%H%M%S") + "-#{id}"
+  end
+  
 end
