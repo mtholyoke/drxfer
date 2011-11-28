@@ -1,18 +1,21 @@
-<p>
-  <b>Name:</b>
-  <%= @agreement.name %>
-</p>
+<h2>Transfer Agreement: <%= @agreement.name %></h2>
 
 <p>
-  <b>Description:</b>
   <%= @agreement.description %>
 </p>
 
+<% if current_user.admin? %>
+  <p>
+    <b>Users:</b>
+    <%= @agreement.users.collect{|u| link_to(u.full_name, edit_user_url(u))}.join(', ').html_safe %>
+  </p>
+<% end %>
+
 <p>
-  <b>Users:</b>
-  <%= @agreement.users.collect{|u| link_to(u.full_name, edit_user_url(u))}.join(', ').html_safe %>
+  <%= link_to "Make a transfer", new_transfer_url %>
 </p>
 
-
-<%= link_to 'Edit', edit_agreement_path(@agreement) %> |
-<%= link_to 'Back', agreements_path %>
+<% if current_user.admin? %>
+  <%= link_to 'Edit', edit_agreement_path(@agreement) %> |
+  <%= link_to 'Back to list of agreements', agreements_path %>
+<% end %>
