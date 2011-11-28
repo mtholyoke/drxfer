@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   attr_accessible :username, :password, :email, :first_name, :last_name, :admin
   
   has_many :assignments
+  has_many :transfers
   has_many :agreements, :through => :assignments
   
   before_save :get_ldap_data

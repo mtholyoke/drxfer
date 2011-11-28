@@ -1,4 +1,4 @@
-<%= form_for(@transfer) do |f| %>
+<%= form_for([@agreement,@transfer]) do |f| %>
   <% if @transfer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@transfer.errors.count, "error") %> prohibited this transfer from being saved:</h2>
@@ -11,10 +11,10 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :agreement_id %><br />
-    <%= f.text_field :agreement_id %>
-  </div>
+  <p>
+    Agreement: <%= @agreement.name %>
+  </p>
+
   <div class="field">
     <%= f.label :description %><br />
     <%= f.text_area :description %>

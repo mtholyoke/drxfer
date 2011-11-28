@@ -11,11 +11,20 @@
   </p>
 <% end %>
 
-<p>
-  <%= link_to "Make a transfer", new_transfer_url %>
-</p>
+<% if @agreement.users.include? current_user %>
+  <p>
+    <%= link_to "Make a transfer", new_agreement_transfer_url(@agreement) %>
+  </p>
+<% end %>
 
 <% if current_user.admin? %>
+  <h3>Transfers</h3>
+  <ul>
+  <% @agreement.transfers.each do |transfer| %>
+    <li><%= link_to transfer, [@agreement, transfer] %></li>
+  <% end %>
+  </ul>
+
   <%= link_to 'Edit', edit_agreement_path(@agreement) %> |
   <%= link_to 'Back to list of agreements', agreements_path %>
 <% end %>

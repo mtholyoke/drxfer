@@ -1,8 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>Agreement:</b>
-  <%= @transfer.agreement_id %>
+  <%= @transfer.agreement.name %>
 </p>
 
 <p>
@@ -10,6 +8,13 @@
   <%= @transfer.description %>
 </p>
 
-
-<%= link_to 'Edit', edit_transfer_path(@transfer) %> |
-<%= link_to 'Back', transfers_path %>
+<p> 
+  <b>Recorded User Information:</b>
+  <%= @transfer.first_name %>
+  <%= @transfer.last_name %>
+  &lt;<%= @transfer.email %>&gt;
+  <% if current_user.admin? and @transfer.user %>
+    (<%= link_to 'User', @transfer.user %>)
+  <% end %>
+</p>
+<%= link_to 'Back to agreement', @agreement %>

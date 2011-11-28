@@ -1,0 +1,20 @@
+<h2><%= @user.first_name %> <%= @user.last_name %></h2>
+
+<p>
+  <b>Username:</b> <%= @user.username %><br />
+  <b>Email:</b> <%= @user.email %>
+</p>    
+  
+<h3>Agreements</h3>
+<% if @user.agreements.size == 0 %>
+  None
+<% else %>
+  <ol>
+  <% @user.agreements.each do |agreement| %>
+    <li><%= link_to agreement.name, agreement %></li>
+  <% end %>
+  </ol>
+<% end%>
+
+<%= link_to 'Edit', edit_user_url(@user) %> |
+<%= link_to 'Back to Users', users_path %>
