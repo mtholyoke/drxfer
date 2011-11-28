@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111128034006) do
+ActiveRecord::Schema.define(:version => 20111128045542) do
 
   create_table "agreements", :force => true do |t|
     t.string   "name"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20111128034006) do
     t.integer  "file_size"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "md5"
   end
 
   create_table "transfers", :force => true do |t|

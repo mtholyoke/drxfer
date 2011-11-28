@@ -13,8 +13,10 @@
   <ol>
     <% @transfer.attachments.each do |attachment| %>
     <li>
-      <%= link_to(File.basename(attachment.asset.url), attachment.asset.url) %>
-      (<%= attachment.content_type %>, <%= attachment.file_size %> bytes)
+      <%= link_to(File.basename(attachment.asset.current_path), attachment.asset.url) %>
+      (<code><%= attachment.content_type %></code>, 
+      <%= number_to_human_size(attachment.file_size) %>,
+      MD5: <code><%= attachment.md5 %></code>)
     </li>
     <% end %>
   </ol>
