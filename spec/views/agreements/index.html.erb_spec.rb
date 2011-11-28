@@ -2,16 +2,8 @@ require 'spec_helper'
 
 describe "agreements/index.html.erb" do
   before(:each) do
-    assign(:agreements, [
-      stub_model(Agreement,
-        :name => "Name",
-        :description => "MyText"
-      ),
-      stub_model(Agreement,
-        :name => "Name",
-        :description => "MyText"
-      )
-    ])
+    FactoryGirl.create(:agreement)
+    FactoryGirl.create(:agreement)
   end
 
   it "renders a list of agreements" do

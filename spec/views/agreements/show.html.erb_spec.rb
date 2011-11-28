@@ -2,10 +2,7 @@ require 'spec_helper'
 
 describe "agreements/show.html.erb" do
   before(:each) do
-    @agreement = assign(:agreement, stub_model(Agreement,
-      :name => "Name",
-      :description => "MyText"
-    ))
+    @agreement = FactoryGirl.create(:agreement)
   end
 
   it "renders attributes in <p>" do

@@ -2,10 +2,7 @@ require 'spec_helper'
 
 describe "agreements/edit.html.erb" do
   before(:each) do
-    @agreement = assign(:agreement, stub_model(Agreement,
-      :name => "MyString",
-      :description => "MyText"
-    ))
+    @agreement = FactoryGirl.create(:agreement)
   end
 
   it "renders the edit agreement form" do
