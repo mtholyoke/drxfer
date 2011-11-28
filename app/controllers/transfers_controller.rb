@@ -28,6 +28,7 @@ class TransfersController < ApplicationController
   def new
     @agreement = Agreement.find(params[:agreement_id])
     @transfer = Transfer.new
+    @transfer.attachments.build
 
     respond_to do |format|
       format.html # new.html.erb

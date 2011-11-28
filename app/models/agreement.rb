@@ -13,7 +13,8 @@ class Agreement < ActiveRecord::Base
     elsif users.size > 2
       users.first.full_name + ', ' + 
       users.all[1].full_name + 
-      ', and ' + (users.size - 2).to_s + ' others.'
+      ', and ' + (users.size - 2).to_s + ' other' +
+      (users.size > 3 ? 's' : '') + '.'
     end
   end
 end

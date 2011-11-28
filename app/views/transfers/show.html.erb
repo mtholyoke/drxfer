@@ -8,6 +8,18 @@
   <%= @transfer.description %>
 </p>
 
+<p>
+  <b>Attachments:</b>
+  <ol>
+    <% @transfer.attachments.each do |attachment| %>
+    <li>
+      <%= link_to(File.basename(attachment.asset.url), attachment.asset.url) %>
+      (<%= attachment.content_type %>, <%= attachment.file_size %> bytes)
+    </li>
+    <% end %>
+  </ol>
+</p>
+
 <p> 
   <b>Recorded User Information:</b>
   <%= @transfer.first_name %>
@@ -17,4 +29,5 @@
     (<%= link_to 'User', @transfer.user %>)
   <% end %>
 </p>
+
 <%= link_to 'Back to agreement', @agreement %>
