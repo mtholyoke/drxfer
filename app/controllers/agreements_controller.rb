@@ -26,6 +26,7 @@ class AgreementsController < ApplicationController
   def new
     @agreement = Agreement.new
     @users = User.all
+    @folders = Folder.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,6 +38,7 @@ class AgreementsController < ApplicationController
   def edit
     @agreement = Agreement.find(params[:id])
     @users = User.all
+    @folders = Folder.all
   end
 
   # POST /agreements
@@ -46,6 +48,7 @@ class AgreementsController < ApplicationController
     @agreement.attributes = {'user_ids' => []}.merge(params[:agreement] || {})
     
     @users = User.all
+    @folders = Folder.all
 
     respond_to do |format|
       if @agreement.save
@@ -65,6 +68,7 @@ class AgreementsController < ApplicationController
     @agreement.attributes = {'user_ids' => []}.merge(params[:agreement] || {})
 
     @users = User.all
+    @folders = Folder.all
 
     respond_to do |format|
       if @agreement.update_attributes(params[:agreement])

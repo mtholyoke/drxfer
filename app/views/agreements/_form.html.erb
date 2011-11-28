@@ -15,10 +15,20 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+  
   <div class="field">
     <%= f.label :description %><br />
     <%= f.text_area :description, :size => '60x4' %>
   </div>
+
+  <div class="field">
+    <%= f.label :folder, "Destination Folder" %><br />
+    <%= f.collection_select :folder_id, Folder.all, :id, :path, :prompt => true, :include_blank => true %>
+    <p>
+    <strong>Note:</strong> no files may be transferred under this agreement unless a destination folder is assigned.
+    </p>
+  </div>
+  
   
   <fieldset id="users_fs">
   <legend>Users</legend>

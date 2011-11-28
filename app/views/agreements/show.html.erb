@@ -11,7 +11,11 @@
   </p>
 <% end %>
 
-<% if @agreement.users.include? current_user %>
+<% if @agreement.folder.nil? %>
+  <p>
+    <strong>Note:</strong> No files can be transferred under this agreement until an administrator assigns a destination folder.
+  </p>
+<% elsif @agreement.users.include? current_user %>  
   <p>
     <%= link_to "Make a transfer", new_agreement_transfer_url(@agreement) %>
   </p>

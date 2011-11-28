@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111128045542) do
+ActiveRecord::Schema.define(:version => 20111128190609) do
 
   create_table "agreements", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "folder_id"
   end
 
   create_table "assignments", :force => true do |t|
@@ -35,6 +36,14 @@ ActiveRecord::Schema.define(:version => 20111128045542) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "md5"
+  end
+
+  create_table "folders", :force => true do |t|
+    t.string   "path"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "transfers", :force => true do |t|
