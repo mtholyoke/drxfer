@@ -16,7 +16,8 @@ class Transfer < ActiveRecord::Base
   
   def destination_folder
     return nil unless agreement.folder
-    agreement.folder.path + '/' + self.created_at.strftime("%Y-%m-%d_%H%M%S") + "-#{id}"
+    agreement.folder.full_path + '/' +
+    self.created_at.strftime("%Y-%m-%d_%H%M%S") + "-#{id}"
   end
   
 end

@@ -5,20 +5,26 @@ class Folder < ActiveRecord::Base
   has_many :agreements
   before_validation :normalize_path
   validates_uniqueness_of :path, :name
+  validates_format_of :path, :without => /\.\./, :message => 'cannot contain ..'
   validate :path_exists, :path_is_a_folder, :path_writable
     
   default_scope :order => 'path ASC'  
   
-  # Remove trailing slashes and leading and trailing whitespace
+  # Remove leading and trailing slashes and whitespace
   def normalize_path
     path.strip!
-    path.gsub!(/[\/\\]$/, '')
+    path.gsub!(/[\/\\]+$/, '')
+    path.gsub!(/^[\/\\]+/, '')
   end  
     
+  def full_path
+    Drxfer::Application.config.transfer_destination_base_path.to_s + "/" + path
+  end
+    
   def path_exists
-    if ! File.exist?(path)
+    if ! File.exist?(full_path)
       begin  
-        FileUtils.mkdir_p(path)
+        FileUtils.mkdir_p(full_path)
       rescue SystemCallError => e
         errors.add(:path, "does not exist and could not be created: #{e.message}") 
         raise ActiveRecord::Rollback 
@@ -27,10 +33,10 @@ class Folder < ActiveRecord::Base
   end
 
   def path_is_a_folder
-    errors.add(:path, "is not a folder") unless File.directory?(path)
+    errors.add(:path, "is not a folder") unless File.directory?(full_path)
   end
 
   def path_writable
-    errors.add(:path, "is not writable") unless File.writable?(path)
+    errors.add(:path, "is not writable") unless File.writable?(full_path)
   end
 end
