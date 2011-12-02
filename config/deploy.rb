@@ -1,22 +1,37 @@
-set :application, "set your application name here"
-set :repository,  "set your repository location here"
+set :application, "drxfer"
+set :repository,  "https://github.com/svenaas/drxfer"
+set :scm, :git
+ssh_options[:forward_agent] = true
+set :branch, 'master'
+set :deploy_via, :remote_cache
+set :deploy_to, "/local/data/web/passenger/#{application}"
 
-set :scm, :subversion
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
+role :web, "drxfer"
+role :app, "drxfer"
+role :db,  "db001", :primary => true 
 
-role :web, "your web-server here"                          # Your HTTP server, Apache/etc
-role :app, "your app-server here"                          # This may be the same as your `Web` server
-role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
-role :db,  "your slave db-server here"
+# Assuming Passenger mod_rails:
+namespace :deploy do
+  task :start do ; end
+  task :stop do ; end
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+  end
+end
 
-# if you're still using the script/reaper helper you will need
-# these http://github.com/rails/irs_process_scripts
+# Copy production database config from ~/
+namespace :db do  
+  task :db_config, :except => { :no_release => true }, :role => :app do  
+    run "cp -f ~/database.yml #{release_path}/config/database.yml"  
+  end  
+end  
 
-# If you are using Passenger mod_rails uncomment this:
-# namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end
+# Use symlink to a permanent folder in {shared_path} to contain uploaded files
+desc "Update shared uploads folder"
+task :update_shared_uploads_folder do
+  run "rm -rf #{release_path}/public/uploads"
+  run "mkdir -p #{shared_path}/system/uploads"
+  run "ln -nfs #{shared_path}/system/uploads #{release_path}/public/uploads"
+end
+
+after "deploy:finalize_update", "db:db_config", :update_shared_uploads_folder
