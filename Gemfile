@@ -8,8 +8,7 @@ gem "devise_ldap_authenticatable"
 
 gem 'carrierwave'
 
-# Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 group :development, :test do
   gem 'sqlite3'
