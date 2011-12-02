@@ -1,3 +1,5 @@
+require "bundler/capistrano"
+
 set :application, "drxfer"
 set :repository,  "https://github.com/svenaas/drxfer"
 set :scm, :git
