@@ -49,4 +49,7 @@ Drxfer::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify  
+  
+  # Override base path for transfered files here. Default is Rails.root
+  # config.transfer_destination_base_path = '/'  
 end

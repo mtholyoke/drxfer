@@ -19,7 +19,7 @@
     You have
     <%= current_user.agreements.size %> 
     active transfer 
-    agreement
+    agreement<%= current_user.agreements.size > 1 ? 's' : '' %>
     at present:
   </p>
   <ol>
