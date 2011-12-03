@@ -7,10 +7,11 @@ ssh_options[:forward_agent] = true
 set :branch, 'master'
 set :deploy_via, :remote_cache
 set :deploy_to, "/local/data/web/passenger/#{application}"
+set :use_sudo, false
 
 role :web, "drxfer"
 role :app, "drxfer"
-role :db,  "db001", :primary => true 
+role :db,  "drxfer", :primary => true 
 
 # Assuming Passenger mod_rails:
 namespace :deploy do
