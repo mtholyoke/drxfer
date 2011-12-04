@@ -22,11 +22,11 @@ namespace :deploy do
   end
 end
 
-# Copy production database config from ~/
-namespace :db do  
-  task :db_config, :except => { :no_release => true }, :role => :app do  
-    run "cp -f ~/deployment_configs/drxfer.yml #{release_path}/config/database.yml"  
-  end  
+# Copy production database config from ~/deployment_configs
+desc "Copy production configuration files"
+task :copy_production_configs, :except => { :no_release => true }, :role => :app do  
+  run "cp -f ~/deployment_configs/drxfer_database.yml #{release_path}/config/database.yml"  
+  run "cp -f ~/deployment_configs/drxfer_ldap.yml #{release_path}/config/ldap.yml"  
 end  
 
 # Use symlink to a permanent folder in {shared_path} to contain uploaded files
@@ -45,4 +45,6 @@ task :update_transfers_folder do
   run "ln -nfs #{shared_path}/system/transfers #{release_path}/transfers"
 end
 
-after "deploy:finalize_update", "db:db_config", :update_shared_uploads_folder, :update_transfers_folder
+after "deploy:finalize_update", :copy_production_configs, 
+                                :update_shared_uploads_folder, 
+                                :update_transfers_folder
