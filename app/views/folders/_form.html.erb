@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :path %><br />
-    <%= f.text_field :path %>
+    <%= f.text_field :path, :size => 66 %>
     <p>
       All paths are relative to 
       <code><%= Drxfer::Application.config.transfer_destination_base_path %></code>
@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :size => 66 %>
   </div>
   <div class="field">
     <%= f.label :description %><br />

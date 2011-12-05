@@ -2,9 +2,7 @@
 
 <table>
   <tr>
-    <th>Path</th>
     <th>Name</th>
-    <th>Description</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,9 +10,7 @@
 
 <% @folders.each do |folder| %>
   <tr>
-    <td><code><%= folder.path %></code></td>
     <td><%= folder.name %></td>
-    <td><%= folder.description %></td>
     <td><%= link_to 'Show', folder %></td>
     <td><%= link_to 'Edit', edit_folder_path(folder) %></td>
     <td><%= link_to 'Destroy', folder, :confirm => 'Are you sure?', :method => :delete %></td>
