@@ -10,6 +10,8 @@ gem 'carrierwave'
 
 gem 'capistrano'
 
+gem 'exception_notification'
+
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
