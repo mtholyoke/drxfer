@@ -9,9 +9,9 @@ set :deploy_via, :remote_cache
 set :deploy_to, "/local/data/web/passenger/#{application}"
 set :use_sudo, false
 
-role :web, "drxfer"
-role :app, "drxfer"
-role :db,  "drxfer", :primary => true 
+role :web, "mtholyoke.edu"
+role :app, "mtholyoke.edu"
+role :db,  "mtholyoke.edu", :primary => true 
 
 # Assuming Passenger mod_rails:
 namespace :deploy do
@@ -27,6 +27,7 @@ desc "Copy production configuration files"
 task :copy_production_configs, :except => { :no_release => true }, :role => :app do  
   run "cp -f ~/deployment_configs/drxfer_database.yml #{release_path}/config/database.yml"  
   run "cp -f ~/deployment_configs/drxfer_ldap.yml #{release_path}/config/ldap.yml"  
+  run "cp -f ~/deployment_configs/drxfer_production.rb #{release_path}/config/environments/production.rb"  
 end  
 
 # Use symlink to a permanent folder in {shared_path} to contain uploaded files
