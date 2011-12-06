@@ -2,7 +2,7 @@ Drxfer::Application.routes.draw do
 
   resources :folders
 
-  devise_for :users
+  devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout'} 
   
   resources :users
   resources :agreements do 

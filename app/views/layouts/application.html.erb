@@ -10,7 +10,9 @@
 <div id="wrapper">
 <p id="session">
   <% if user_signed_in? %>
-    Signed in as <%= current_user.first_name %> <%= current_user.last_name %>
+    Logged in as <%= current_user.first_name %> <%= current_user.last_name %>
+    —
+    <%= link_to 'Log out', destroy_user_session_url, :method => :delete %>
   <% else %>
     Not signed in
   <% end %>
