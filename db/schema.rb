@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111128190609) do
+ActiveRecord::Schema.define(:version => 20111207023448) do
 
   create_table "agreements", :force => true do |t|
     t.string   "name"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20111128190609) do
 
   create_table "folders", :force => true do |t|
     t.string   "path"
-    t.string   "name"
+    t.string   "name",        :limit => 16
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"

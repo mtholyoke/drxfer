@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Description</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,6 +12,7 @@
 <% @folders.each do |folder| %>
   <tr>
     <td><%= folder.name %></td>
+    <td><%= folder.description %></td>
     <td><%= link_to 'Show', folder %></td>
     <td><%= link_to 'Edit', edit_folder_path(folder) %></td>
     <td><%= link_to 'Destroy', folder, :confirm => 'Are you sure?', :method => :delete %></td>
