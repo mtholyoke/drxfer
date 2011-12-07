@@ -6,3 +6,4 @@ tmp/
 config/ldap.yml
 config/environments/production.rb
 public/uploads/*
+.sass-cache/

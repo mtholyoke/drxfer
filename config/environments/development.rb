@@ -24,6 +24,12 @@ Drxfer::Application.configure do
   
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   
+  # Do not compress assets
+  config.assets.compress = false
+
+  # Expands the lines which load the assets
+  config.assets.debug = true
+  
   # Override base path for transfered files here. Default is Rails.root
   config.transfer_destination_base_path = Rails.root.to_s + '/' + 'transfers'
 end
