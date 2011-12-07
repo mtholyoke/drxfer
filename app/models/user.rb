@@ -15,9 +15,14 @@ class User < ActiveRecord::Base
   
   def get_ldap_data
     return if Rails.env == 'test'
-    self.email      = Devise::LdapAdapter.get_ldap_param(self.username,"mail")[0]
-    self.first_name = Devise::LdapAdapter.get_ldap_param(self.username,"givenname")[0]
-    self.last_name  = Devise::LdapAdapter.get_ldap_param(self.username,"sn")[0]
+    begin
+      self.email      = Devise::LdapAdapter.get_ldap_param(self.username,"mail")[0]
+      self.first_name = Devise::LdapAdapter.get_ldap_param(self.username,"givenname")[0]
+      self.last_name  = Devise::LdapAdapter.get_ldap_param(self.username,"sn")[0]
+    rescue
+      self.errors[:username] ="#{self.username} not found"
+      return false
+    end
   end
   
   def full_name
