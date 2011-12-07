@@ -85,6 +85,7 @@ class AgreementsController < ApplicationController
   # DELETE /agreements/1.xml
   def destroy
     @agreement = Agreement.find(params[:id])
+    raise "Cannot delete agreements against which transfers have already been made" if @agreement.transfers.size > 0
     @agreement.destroy
 
     respond_to do |format|

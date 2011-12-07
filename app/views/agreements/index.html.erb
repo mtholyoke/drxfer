@@ -5,6 +5,7 @@
     <th>Name</th>
     <th>Users</th>
     <th>Destination Folder</th>
+    <th>Transfers</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,10 +15,11 @@
   <tr>
     <td><%= agreement.name %></td>
     <td><%= agreement.users_summary %></td>
-    <td><%= (agreement.folder ? '<code>' + agreement.folder.path + '</code>' : '<i>None</i>').html_safe %></td>    
+    <td><%= (agreement.folder ? '<code>' + agreement.folder.name + '</code>' : '<i>None</i>').html_safe %></td>    
+    <td><%= agreement.transfers.size %></td>
     <td><%= link_to 'Show', agreement %></td>
     <td><%= link_to 'Edit', edit_agreement_path(agreement) %></td>
-    <td><%= link_to 'Destroy', agreement, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><% if agreement.transfers.size == 0 -%><%= link_to 'Destroy', agreement, :confirm => 'Are you sure?', :method => :delete %><% end -%></td>
   </tr>
 <% end %>
 </table>
