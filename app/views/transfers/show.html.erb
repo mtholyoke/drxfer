@@ -14,9 +14,9 @@
     <% @transfer.attachments.each do |attachment| %>
     <li>
       <%= link_to(File.basename(attachment.asset.current_path), attachment.asset.url) %>
-      (<code><%= attachment.content_type %></code>, 
-      <%= number_to_human_size(attachment.file_size) %>,
-      MD5: <code><%= attachment.md5 %></code>)
+      (<% if current_user.admin? -%><code><%= attachment.content_type %></code>,
+      <% end -%><%= number_to_human_size(attachment.file_size) %><% if current_user.admin? -%>,
+      MD5: <code><%= attachment.md5 %></code><% end -%>)
     </li>
     <% end %>
   </ol>
