@@ -57,6 +57,9 @@ class FoldersController < ApplicationController
   # PUT /folders/1.xml
   def update
     @folder = Folder.find(params[:id])
+    
+    # Make sure no one is trying to change the folder path by manipulating the form submission
+    params[:folder].delete :params
 
     respond_to do |format|
       if @folder.update_attributes(params[:folder])

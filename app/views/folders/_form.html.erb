@@ -12,13 +12,19 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :path %><br />
-    <%= f.text_field :path, :size => 66 %>
+    <% if @folder.id.nil? %>
+      <%= f.label :path %><br />
+      <%= f.text_field :path, :size => 66 %>
+    <% else %>
+      <p>Path<br><code><%= @folder.path %></code></p>
+      <p>Paths cannot be edited after a folder has been created.</p>
+    <% end %>
     <p>
       All paths are relative to 
       <code><%= Drxfer::Application.config.transfer_destination_base_path %></code>
     </p>
   </div>
+  
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name, :size => 66 %>
