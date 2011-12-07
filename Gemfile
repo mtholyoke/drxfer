@@ -12,6 +12,9 @@ gem 'capistrano'
 
 gem 'exception_notification'
 
+gem 'nested_form', :git => "git://github.com/ryanb/nested_form.git" 
+# (See https://github.com/ryanb/nested_form/issues/95#issuecomment-2187551)
+
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'

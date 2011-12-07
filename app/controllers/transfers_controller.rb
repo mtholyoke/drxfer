@@ -41,6 +41,7 @@ class TransfersController < ApplicationController
   def create
     @agreement = Agreement.find(params[:agreement_id])
     @transfer = Transfer.new(params[:transfer])
+    
     @transfer.agreement = @agreement
     @transfer.user = current_user
     @transfer.username = current_user.username

@@ -5,7 +5,8 @@ class Attachment < ActiveRecord::Base
   belongs_to :transfer
   mount_uploader :asset, AttachmentUploader
 
-  before_save :update_asset_attributes, :calculate_md5_hash, :transfer_file
+  validates_presence_of :asset
+  before_save :check_for_asset, :update_asset_attributes, :calculate_md5_hash, :transfer_file
   after_save :verify_copy, :verify_md5_hash
   
   def destination
@@ -13,6 +14,12 @@ class Attachment < ActiveRecord::Base
   end
   
   private
+  
+  def check_for_asset
+    unless asset.present?
+      raise "Missing asset!"
+    end
+  end
   
   def update_asset_attributes
     if asset.present? && asset_changed?
