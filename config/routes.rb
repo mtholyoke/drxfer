@@ -6,7 +6,7 @@ Drxfer::Application.routes.draw do
   
   resources :users
   resources :agreements do 
-    resources :transfers
+    resources :transfers, :except => [:edit, :destroy]
   end
   
   # The priority is based upon order of creation:

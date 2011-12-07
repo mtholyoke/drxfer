@@ -36,12 +36,6 @@ class TransfersController < ApplicationController
     end
   end
 
-  # GET /transfers/1/edit
-  def edit
-    @agreement = Agreement.find(params[:agreement_id])
-    @transfer = Transfer.find(params[:id])
-  end
-
   # POST /transfers
   # POST /transfers.xml
   def create
@@ -65,33 +59,4 @@ class TransfersController < ApplicationController
     end
   end
 
-  # PUT /transfers/1
-  # PUT /transfers/1.xml
-  def update
-    @agreement = Agreement.find(params[:agreement_id])
-    @transfer = Transfer.find(params[:id])
-
-    respond_to do |format|
-      if @transfer.update_attributes(params[:transfer])
-        format.html { redirect_to(@transfer, :notice => 'Transfer was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @transfer.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /transfers/1
-  # DELETE /transfers/1.xml
-  def destroy
-    @agreement = Agreement.find(params[:agreement_id])
-    @transfer = Transfer.find(params[:id])
-    @transfer.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(transfers_url) }
-      format.xml  { head :ok }
-    end
-  end
 end
