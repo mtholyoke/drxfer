@@ -69,15 +69,4 @@ class FoldersController < ApplicationController
     end
   end
 
-  # DELETE /folders/1
-  # DELETE /folders/1.xml
-  def destroy
-    @folder = Folder.find(params[:id])
-    @folder.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(folders_url) }
-      format.xml  { head :ok }
-    end
-  end
 end

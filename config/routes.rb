@@ -1,6 +1,6 @@
 Drxfer::Application.routes.draw do
 
-  resources :folders
+  resources :folders, :except => :destroy
 
   devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout'} 
   
