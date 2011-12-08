@@ -7,7 +7,14 @@
   <h3>Recent transfers</h3>
   <ul>
   <% @transfers.each do |transfer| %>
-    <li><%= link_to transfer, agreement_transfer_url(transfer.agreement, transfer) %></li>
+    <li>
+      <%= link_to transfer, agreement_transfer_url(transfer.agreement, transfer) %> —
+      <%= transfer.files_count %>, 
+      <%= number_to_human_size(transfer.files_size) %>
+      <% if transfer.description && transfer.description.strip.length > 0 %>
+        (<i><%= truncate(transfer.description, :length => 60, :separator => ' ') %></i>)
+      <% end %>      
+    </li>
   <% end %>
   </ul>
 <% end %>

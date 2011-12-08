@@ -14,6 +14,14 @@ class Transfer < ActiveRecord::Base
     ' by ' + first_name + ' ' + last_name
   end
   
+  def files_count
+    "#{attachments.size} file" + (attachments.size == 1 ? '' : 's')
+  end
+  
+  def files_size
+    attachments.sum(:file_size)
+  end
+  
   def destination_folder
     return nil unless agreement.folder
     agreement.folder.full_path + '/' +

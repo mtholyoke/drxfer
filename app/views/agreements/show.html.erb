@@ -27,9 +27,8 @@
   <% @agreement.transfers.each do |transfer| %>
     <li>
       <%= link_to transfer, [@agreement, transfer] %>: 
-      <%= transfer.attachments.count %>
-      file<%= transfer.attachments.count != 1 ? 's' : '' %><% if transfer.attachments.size > 0 %>,
-        <%= number_to_human_size(transfer.attachments.sum(:file_size)) %>      
+      <%= transfer.files_count %><% if transfer.attachments.size > 0 %>,
+        <%= number_to_human_size(transfer.files_size) %>      
       <% end %>
       <% if transfer.description && transfer.description.strip.length > 0 %>
         (<i><%= truncate(transfer.description, :length => 60, :separator => ' ') %></i>)
