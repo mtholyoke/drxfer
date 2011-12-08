@@ -22,11 +22,19 @@
   </div>
 
   <div class="field">
-    <%= f.label :folder, "Destination Folder" %><br />
-    <%= f.collection_select :folder_id, Folder.all, :id, :name_with_description, :prompt => true, :include_blank => true %>
-    <p>
-    <strong>Note:</strong> no files may be transferred under this agreement unless a destination folder is assigned.
-    </p>
+    <% if @agreement.transfers.size == 0 %>
+      <%= f.label :folder, "Destination Folder" %><br />
+      <%= f.collection_select :folder_id, Folder.all, :id, :name_with_description, :prompt => true, :include_blank => true %>
+    <% else %>
+      <p>Destination Folder<br><%= @agreement.folder.name_with_description %></p>
+      <p>Folder selection cannot be changed after a transfer has been made.</p>
+    <% end %>
+    
+    <% if @agreement.folder.nil? %>
+      <p>
+      <strong>Note:</strong> no files may be transferred under this agreement unless a destination folder is assigned.
+      </p>
+    <% end %>
   </div>
   
   
