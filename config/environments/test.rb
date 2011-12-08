@@ -44,4 +44,7 @@ Drxfer::Application.configure do
 
   # Override base path for transfered files here. Default is Rails.root
   # config.transfer_destination_base_path = '/'  
+  
+  config.email_notification_from_address = 'drxfer@example.com'
+  config.transfer_notification_recipient_addresses = ['drxfer.admin@example.com']
 end

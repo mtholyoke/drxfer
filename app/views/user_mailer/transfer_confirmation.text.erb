@@ -1,0 +1,8 @@
+Dear <%= @transfer.user.first_name %>,
+
+Thank you for transferring your digital records. 
+
+We have received the following file<%= @transfer.attachments.size == 1 ? '' : 's' %>:
+<% @transfer.attachments.each do |attachment| %>
+  <%= File.basename(attachment.asset.current_path) %> 
+<% end %>

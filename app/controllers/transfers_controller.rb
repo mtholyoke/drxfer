@@ -51,6 +51,8 @@ class TransfersController < ApplicationController
 
     respond_to do |format|
       if @transfer.save
+        UserMailer.transfer_confirmation(@transfer).deliver
+        UserMailer.transfer_notification(@transfer).deliver
         format.html { redirect_to([@agreement, @transfer], :notice => 'Transfer was successfully created.') }
         format.xml  { render :xml => [@agreement, @transfer], :status => :created, :location => [@agreement,@transfer] }
       else

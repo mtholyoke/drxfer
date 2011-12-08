@@ -1,0 +1,21 @@
+Dear Transfer Recipient,
+
+<%= @transfer.user.full_name %> has made a digital records transfer.
+
+Transfer agreement: 
+  <%= @transfer.agreement.name %> 
+
+Path to destination folder:
+  <%= @transfer.agreement.folder.full_path %>
+  
+Transfer description:
+  <%= @transfer.description %>
+  
+Transferred file<%= @transfer.attachments.size == 1 ? '' : 's' %>:
+<% @transfer.attachments.each do |attachment| %>
+
+  <%= File.basename(attachment.asset.current_path) %> 
+    Content-type: <%= attachment.content_type %>
+    Size:         <%= number_to_human_size(attachment.file_size) %>
+    MD5:          <%= attachment.md5 %>    
+<% end %>
