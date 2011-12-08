@@ -8,7 +8,7 @@
   <ul>
   <% @transfers.each do |transfer| %>
     <li>
-      <%= link_to transfer, agreement_transfer_url(transfer.agreement, transfer) %> —
+      <%= link_to transfer, agreement_transfer_url(transfer.agreement, transfer) %>:
       <%= transfer.files_count %>, 
       <%= number_to_human_size(transfer.files_size) %>
       <% if transfer.description && transfer.description.strip.length > 0 %>
