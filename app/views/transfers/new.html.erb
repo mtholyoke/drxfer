@@ -14,10 +14,11 @@
   <% end %>
 
   <p>
-    Agreement: <%= @agreement.name %>
+    <b>Agreement:</b> <%= @agreement.name %>
   </p>
 
   <div class="field">
+    <p>Please enter a title and/or description of the records, along with the date they were created.</p>
     <%= f.label :description %><br />
     <%= f.text_area :description, :size => '60x4', :required => 'required' %>
   </div>
