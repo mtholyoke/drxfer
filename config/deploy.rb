@@ -29,6 +29,7 @@ task :copy_production_configs, :except => { :no_release => true }, :role => :app
   run "cp -f ~/deployment_configs/drxfer_ldap.yml #{release_path}/config/ldap.yml"  
   run "cp -f ~/deployment_configs/drxfer_production.rb #{release_path}/config/environments/production.rb"  
   run "cp -f ~/deployment_configs/drxfer_notifications.rb #{release_path}/config/initializers/notifications.rb"  
+  run "cp -f ~/deployment_configs/drxfer_local.css #{release_path}/assets/stylesheets/local.css"  
 end  
 
 # Use symlink to a permanent folder in {shared_path} to contain uploaded files

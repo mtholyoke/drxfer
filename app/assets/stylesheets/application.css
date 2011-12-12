@@ -5,7 +5,7 @@
 
 body { background-color: #666; }
 
-#wrapper { 
+#wrapper, #header { 
   margin: 2em auto ; 
   width: 800px; 
   background-color: #fff; 
