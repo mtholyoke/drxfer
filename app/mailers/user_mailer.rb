@@ -4,7 +4,7 @@ class UserMailer < ActionMailer::Base
   def transfer_confirmation(transfer)
     @transfer = transfer
     mail(:to => transfer.user.email, 
-         :subject => "Thank you for transferring your digital records")
+         :subject => Drxfer::Application.config.transfer_confirmation_subject)
   end
   
   def transfer_notification(transfer)

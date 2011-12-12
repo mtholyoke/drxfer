@@ -1,8 +1,14 @@
 Dear <%= @transfer.user.first_name %>,
 
-Thank you for transferring your digital records. 
+<% if (preamble = Drxfer::Application.config.transfer_confirmation_preamble) && preamble.to_s.length > 0 -%>
+<%= preamble.to_s %>
 
+<% end -%>
 We have received the following file<%= @transfer.attachments.size == 1 ? '' : 's' %>:
 <% @transfer.attachments.each do |attachment| %>
   <%= File.basename(attachment.asset.current_path) %> 
 <% end %>
+<% if (conclusion = Drxfer::Application.config.transfer_confirmation_preamble.to_s) && conclusion.to_s.length > 0 -%>
+
+<%= conclusion.to_s %>
+<% end -%>
