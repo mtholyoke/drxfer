@@ -9,9 +9,9 @@ set :deploy_via, :remote_cache
 set :deploy_to, "/local/data/web/passenger/#{application}"
 set :use_sudo, false
 
-role :web, "mtholyoke.edu"
-role :app, "mtholyoke.edu"
-role :db,  "mtholyoke.edu", :primary => true 
+role :web, "drxfer.mtholyoke.edu"
+role :app, "drxfer.mtholyoke.edu"
+role :db,  "drxfer.mtholyoke.edu", :primary => true 
 
 # Assuming Passenger mod_rails:
 namespace :deploy do
@@ -28,6 +28,7 @@ task :copy_production_configs, :except => { :no_release => true }, :role => :app
   run "cp -f ~/deployment_configs/drxfer_database.yml #{release_path}/config/database.yml"  
   run "cp -f ~/deployment_configs/drxfer_ldap.yml #{release_path}/config/ldap.yml"  
   run "cp -f ~/deployment_configs/drxfer_production.rb #{release_path}/config/environments/production.rb"  
+  run "cp -f ~/deployment_configs/drxfer_notifications.rb #{release_path}/config/initializers/notifications.rb"  
 end  
 
 # Use symlink to a permanent folder in {shared_path} to contain uploaded files
