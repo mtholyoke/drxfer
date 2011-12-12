@@ -21,7 +21,7 @@
     <% end %>
     <p>
       All paths are relative to 
-      <code><%= Drxfer::Application.config.transfer_destination_base_path %></code>
+      <%= Drxfer::Application.config.transfer_destination_base_path_description.to_s.html_safe %>
     </p>
   </div>
   

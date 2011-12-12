@@ -47,7 +47,9 @@ module Drxfer
     config.filter_parameters += [:password]
 
     # Set base path for transfered files. All files will be copied into this path.
+    # *** MAKE SURE *** to keep the base path description in sync so that it is described correctly.
     config.transfer_destination_base_path = Rails.root
+    config.transfer_destination_base_path_description = "the application's root folder."    
     
     # Enable the asset pipeline
     config.assets.enabled = true

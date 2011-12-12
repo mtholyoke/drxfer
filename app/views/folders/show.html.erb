@@ -1,11 +1,4 @@
 <p>
-  <b>Path:</b>
-  <code><%= @folder.path %></code><br/>
-  <br>
-  (Full Path: <code><%= @folder.full_path %></code>)
-</p>
-
-<p>
   <b>Name:</b>
   <%= @folder.name %>
 </p>
@@ -15,6 +8,17 @@
   <%= @folder.description %>
 </p>
 
+<p>
+  <b>Path:</b>
+  <code><%= @folder.path %></code><br/>
+</p>
+  <p>
+    All paths are relative to 
+    <%= Drxfer::Application.config.transfer_destination_base_path_description.to_s.html_safe %>
+  </p>
+  <p>
+    The drxfer application accesses the folder <%= @folder.name %> via: <code><%= @folder.full_path %></code>
+</p>
 
 <%= link_to 'Edit', edit_folder_path(@folder) %> |
 <%= link_to 'Back', folders_path %>

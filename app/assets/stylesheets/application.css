@@ -13,6 +13,10 @@ body { background-color: #666; }
   padding: 1em;
 }
 
+#header {
+  display: none;
+}
+
 #session {
   float: right;
   background: #ccc;

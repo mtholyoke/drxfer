@@ -31,7 +31,9 @@ Drxfer::Application.configure do
   config.assets.debug = true
   
   # Override base path for transfered files here. Default is Rails.root
+  # *** MAKE SURE *** to keep the base path description in sync so that it is described correctly.
   config.transfer_destination_base_path = Rails.root.to_s + '/' + 'transfers'
+  config.transfer_destination_base_path_description = 'the <code>transfers</code> folder.'  
   
   config.email_notification_from_address = 'drxfer@example.com'
   config.transfer_notification_recipient_addresses = ['drxfer.admin@example.com']
