@@ -7,6 +7,8 @@ class Folder < ActiveRecord::Base
   validates_uniqueness_of :path, :name
   validates_length_of :name, :maximum => 16
   validates_presence_of :name
+  validates_presence_of :path
+  validates_length_of :path, :minimum => 1
   validates_format_of :path, :without => /\.\./, :message => 'cannot contain ..'
   validate :path_exists, :path_is_a_folder, :path_writable
     
