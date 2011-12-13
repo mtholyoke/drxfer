@@ -11,3 +11,6 @@ transfers from various departments, offices, and programs. The transferred
 records are stored on a file server, from which they will in due course be
 retrieved, processed, and delivered to a permanent home for preservation
 and access as appropriate.
+
+== Dependency Status {<img src="https://gemnasium.com/svenaas/drxfer.png?travis"/>}[https://gemnasium.com/svenaas/drxfer]
+
