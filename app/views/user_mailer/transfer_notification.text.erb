@@ -5,8 +5,8 @@ Dear Transfer Recipient,
 Transfer agreement: 
   <%= @transfer.agreement.name %> 
 
-Path to destination folder:
-  <%= @transfer.agreement.folder.full_path %>
+Path to destination folder (relative to <%= strip_tags(Drxfer::Application.config.transfer_destination_base_path_description.to_s.html_safe).gsub(/\.$/,'') %>):
+  <%= @transfer.agreement.folder.path %>
   
 Transfer description:
   <%= @transfer.description %>
