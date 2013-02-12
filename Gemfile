@@ -12,6 +12,8 @@ gem 'capistrano'
 
 gem 'exception_notification'
 
+gem 'json', '1.7.7'
+
 gem 'nested_form', :git => "git://github.com/ryanb/nested_form.git"
 # (See https://github.com/ryanb/nested_form/issues/95#issuecomment-2187551)
 
