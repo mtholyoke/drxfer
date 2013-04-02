@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.10'
+gem 'rails', '3.1.12'
 gem 'rake', '10.0.3'
 
 gem "devise", "~> 2.2.3"
