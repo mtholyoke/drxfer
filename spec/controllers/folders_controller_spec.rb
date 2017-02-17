@@ -24,7 +24,17 @@ describe FoldersController do
   # Folder. As you add validations to Folder, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    { 
+      path: '/folder/example', 
+      name: 'Folder Example',
+      description: 'Description example'
+    }
+  end
+
+  # Creates a user to sign in before each test because authenticate_user! is called before action
+  before (:each) do
+    @user = FactoryGirl.create(:user)
+    sign_in @user
   end
 
   describe "GET index" do
@@ -136,21 +146,6 @@ describe FoldersController do
         put :update, :id => folder.id.to_s, :folder => {}
         response.should render_template("edit")
       end
-    end
-  end
-
-  describe "DELETE destroy" do
-    it "destroys the requested folder" do
-      folder = Folder.create! valid_attributes
-      expect {
-        delete :destroy, :id => folder.id.to_s
-      }.to change(Folder, :count).by(-1)
-    end
-
-    it "redirects to the folders list" do
-      folder = Folder.create! valid_attributes
-      delete :destroy, :id => folder.id.to_s
-      response.should redirect_to(folders_url)
     end
   end
 
