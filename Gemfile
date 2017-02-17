@@ -18,6 +18,8 @@ gem 'nested_form', "~> 0.2.1"
 # (See https://github.com/ryanb/nested_form/issues/95#issuecomment-2187551)
 
 group :development, :test do
+  # debugger gem
+  gem 'debugger'
   gem 'sqlite3'
   gem 'rspec-rails', " ~> 2.13"
   gem 'factory_girl', " ~> 2.6.4"
