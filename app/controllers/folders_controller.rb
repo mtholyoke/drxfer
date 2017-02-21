@@ -3,6 +3,7 @@ class FoldersController < ApplicationController
   # GET /folders.xml
   def index
     @folders = Folder.all
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @folders }
