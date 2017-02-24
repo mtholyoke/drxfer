@@ -20,6 +20,8 @@ gem 'nested_form', "~> 0.2.1"
 group :development, :test do
   # debugger gem
   gem 'debugger'
+  # for testing associations
+  gem 'shoulda-matchers'
   gem 'sqlite3'
   gem 'rspec-rails', " ~> 2.13"
   gem 'factory_girl', " ~> 2.6.4"
