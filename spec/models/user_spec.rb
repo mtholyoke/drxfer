@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+	context "associations" do
+		it { should have_many(:assignments) }
+		it { should have_many(:transfers) }
+		it { should have_many(:agreements).through(:assignments) }
+	end
 end

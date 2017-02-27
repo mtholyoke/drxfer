@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Agreement, type: :model do
+describe Agreement do
 	context "validations" do
 		it "is valid with proper values" do    
 			agreement = Agreement.new :name =>"Name"

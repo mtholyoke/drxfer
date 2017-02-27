@@ -21,7 +21,7 @@ group :development, :test do
   # debugger gem
   gem 'debugger'
   # for testing associations
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers' #, github: 'thoughtbot/shoulda-matchers'
   gem 'sqlite3'
   gem 'rspec-rails', " ~> 2.13"
   gem 'factory_girl', " ~> 2.6.4"
