@@ -1,5 +1,14 @@
 require 'spec_helper'
 
 describe "home/index.html.erb" do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before(:each) do
+    @user = FactoryGirl.create(:user)
+    sign_in @user
+    @user.agreements.create(name: "Name").transfers.create(description: "Text")
+  end
+
+  it "renders a list of transfers" do
+    render
+    rendered.should contain("Name")
+  end
 end
