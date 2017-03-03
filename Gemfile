@@ -24,6 +24,7 @@ group :development, :test do
   gem 'shoulda-matchers' #, github: 'thoughtbot/shoulda-matchers'
   gem 'sqlite3'
   gem 'rspec-rails', " ~> 2.13"
+  gem 'rspec-activemodel-mocks'
   gem 'factory_girl', " ~> 2.6.4"
   gem 'factory_girl_rails', " ~> 1.7"
   gem "webrat"
