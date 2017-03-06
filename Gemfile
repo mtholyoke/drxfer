@@ -18,8 +18,7 @@ gem 'nested_form', "~> 0.2.1"
 # (See https://github.com/ryanb/nested_form/issues/95#issuecomment-2187551)
 
 group :development, :test do
-  # debugger gem
-  gem 'debugger'
+  gem 'byebug'
   # for testing associations
   gem 'shoulda-matchers' #, github: 'thoughtbot/shoulda-matchers'
   gem 'sqlite3'
