@@ -16,16 +16,16 @@ ActiveRecord::Schema.define(:version => 20111207023448) do
   create_table "agreements", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "folder_id"
   end
 
   create_table "assignments", :force => true do |t|
     t.integer  "agreement_id"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "attachments", :force => true do |t|
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(:version => 20111207023448) do
     t.string   "asset"
     t.string   "content_type"
     t.integer  "file_size"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.string   "md5"
   end
 
@@ -42,15 +42,15 @@ ActiveRecord::Schema.define(:version => 20111207023448) do
     t.string   "path"
     t.string   "name",        :limit => 16
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "transfers", :force => true do |t|
     t.integer  "agreement_id"
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.integer  "user_id"
     t.string   "username"
     t.string   "email"
@@ -68,8 +68,8 @@ ActiveRecord::Schema.define(:version => 20111207023448) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
     t.boolean  "admin",              :default => false
   end
 

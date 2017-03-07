@@ -23,7 +23,8 @@ describe TransfersController do
   before (:each) do
     @user = FactoryGirl.create(:user)
     sign_in @user
-    @agreement = @user.agreements.create!(name: "Test agreement")
+    @folder = Folder.create!(name: "Test folder", path: "/folder/example", description: "Folder example")
+    @agreement = @folder.agreements.create!(name: "Test agreement")
   end
 
   # This should return the minimal set of attributes required to create a valid
@@ -36,6 +37,18 @@ describe TransfersController do
       username: 'example_username',
       email: 'test@example.com',
       first_name: 'Mister',
+      last_name: 'Example'
+    }
+  end
+
+  # used in testing "POST create" tests 
+  def create_valid_attributes
+    {
+      user_id: @user.id, 
+      description: 'Description example',
+      username: 'example_username', 
+      email: 'test@example.com',
+      first_name: 'Test',
       last_name: 'Example'
     }
   end
@@ -58,7 +71,7 @@ describe TransfersController do
 
   describe "GET new" do
     it "assigns a new transfer as @transfer" do
-      get :new, :agreement => @agreement, :agreement_id => @agreement.id
+      get :new, :user => @user_id, :agreement => @agreement, :agreement_id => @agreement.id
       assigns(:transfer).should be_a_new(Transfer)
     end
   end
@@ -66,20 +79,18 @@ describe TransfersController do
   describe "POST create" do
     context "with valid params" do
       it "creates a new Transfer" do
-        expect{ post :create, :agreement_id => @agreement.id, :transfer => valid_attributes }.to change(Transfer, :count).by(1)
+        expect{ post :create, :agreement_id => @agreement.id, :transfer => create_valid_attributes }.to change(Transfer, :count).by(1)
       end
 
       it "assigns a newly created transfer as @transfer" do
-        # transfer = @agreement.transfers.create! valid_attributes
-        post :create, :agreement_id => @agreement.id, :transfer => valid_attributes
+        post :create, :agreement_id => @agreement.id, :transfer => create_valid_attributes
         assigns(:transfer).should be_a(Transfer)
         assigns(:transfer).should be_persisted
       end
 
       it "redirects to the created transfer" do
-        # @agreement.transfers.create! valid_attributes
-        post :create, :agreement_id => @agreement.id, :transfer => valid_attributes
-        response.should redirect_to(Transfer.last)
+        post :create, :agreement_id => @agreement.id, :transfer => create_valid_attributes
+        response.should redirect_to agreement_transfer_path(agreement_id: @agreement.id, id: Transfer.last.id)
       end
     end
 

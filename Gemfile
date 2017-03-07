@@ -6,7 +6,7 @@ gem 'rake', '10.0.3'
 gem "devise", "2.2.3"
 gem "devise_ldap_authenticatable", "~> 0.6.1"
 
-gem 'carrierwave', "~> 0.5.8"
+gem 'carrierwave'
 
 gem 'capistrano', "~> 2.14.2"
 
