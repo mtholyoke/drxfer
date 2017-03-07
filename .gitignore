@@ -9,3 +9,4 @@ public/uploads/*
 .sass-cache/
 .ansible
 .vagrant
+.byebug_history
