@@ -3,6 +3,8 @@ source 'http://rubygems.org'
 gem 'rails', '3.2.0'
 gem 'rake', '10.0.3'
 
+gem 'pg'
+
 gem "devise", "2.2.3"
 gem "devise_ldap_authenticatable", "~> 0.6.1"
 
@@ -30,7 +32,7 @@ group :development, :test do
 end
 
 group :production do
-  gem 'pg', "~> 0.15.0"
+  gem 'pg'
 end
 
 # Gems used only for assets and not required

@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   default_scope :order => 'admin DESC, last_name ASC, first_name ASC'
 
   def get_ldap_data
-    return if Rails.env == 'test'
+   return if Rails.env.test? || Rails.env.development? 
     begin
       self.email      = Devise::LdapAdapter.get_ldap_param(self.username,"mail")
       self.first_name = Devise::LdapAdapter.get_ldap_param(self.username,"givenname")

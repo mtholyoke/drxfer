@@ -189,7 +189,7 @@ DEPENDENCIES
   jquery-rails
   json (= 1.7.7)
   nested_form (~> 0.2.1)
-  pg (~> 0.15.0)
+  pg
   rails (= 3.2.0)
   rake (= 10.0.3)
   rspec-activemodel-mocks
