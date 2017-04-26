@@ -40,7 +40,7 @@ class FoldersController < ApplicationController
   # POST /folders
   # POST /folders.xml
   def create
-    @folder = Folder.new(params[:folder])
+    @folder = Folder.new(folder_params)
 
     respond_to do |format|
       if @folder.save
@@ -62,7 +62,7 @@ class FoldersController < ApplicationController
     params[:folder].delete :params
 
     respond_to do |format|
-      if @folder.update_attributes(params[:folder])
+      if @folder.update_attributes(folder_params)
         format.html { redirect_to(@folder, :notice => 'Folder was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -72,4 +72,9 @@ class FoldersController < ApplicationController
     end
   end
 
+  private
+
+  def folder_params
+    params.require(:folder).permit(:path, :name, :description)
+  end
 end

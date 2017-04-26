@@ -40,7 +40,7 @@ class TransfersController < ApplicationController
   # POST /transfers.xml
   def create
     @agreement = Agreement.find(params[:agreement_id])
-    @transfer = Transfer.new(params[:transfer])
+    @transfer = Transfer.new(transfer_params)
     
     @transfer.agreement = @agreement
     @transfer.user = current_user
@@ -62,4 +62,9 @@ class TransfersController < ApplicationController
     end
   end
 
+  private
+
+  def transfer_params
+    params.require(:transfer).permit(:description, :username, :email, :first_name, :last_name, :user, :attachment, :attachments_attributes)
+  end
 end

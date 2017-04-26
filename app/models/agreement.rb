@@ -1,5 +1,4 @@
 class Agreement < ActiveRecord::Base
-  attr_accessible :name, :description, :user_ids, :folder_id
   validates_presence_of :name, :message => 'is required'
   has_many :assignments  
   has_many :users, :through => :assignments

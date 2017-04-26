@@ -1,7 +1,6 @@
 require 'fileutils'
 
 class Folder < ActiveRecord::Base
-  attr_accessible :path, :name, :description    
   has_many :agreements
   before_validation :normalize_path
   validates_uniqueness_of :path, :name
@@ -11,8 +10,8 @@ class Folder < ActiveRecord::Base
   validates_length_of :path, :minimum => 1
   validates_format_of :path, :without => /\.\./, :message => 'cannot contain ..'
   validate :path_exists, :path_is_a_folder, :path_writable
-    
-  default_scope :order => 'name ASC'  
+  
+  default_scope  { order(:name => :asc) }  
   
   def name_with_description
     name + ' (' + description + ')'
