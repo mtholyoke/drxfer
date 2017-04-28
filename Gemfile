@@ -21,8 +21,6 @@ gem 'nested_form', "~> 0.2.1"
 
 group :test do
   gem 'shoulda-matchers', '~> 3.0', require: false
-  gem 'database_cleaner', '~> 1.5'
-  gem 'faker', '~> 1.6.1'
 end
 
 group :development, :test do
