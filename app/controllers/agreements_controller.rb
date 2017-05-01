@@ -70,7 +70,7 @@ class AgreementsController < ApplicationController
     @users = User.all
     @folders = Folder.all
 
-    respond_to do |format|
+    respond_to do |format|  
       if @agreement.update_attributes(agreement_params)
         format.html { redirect_to(@agreement, :notice => 'Agreement was successfully updated.') }
         format.xml  { head :ok }
