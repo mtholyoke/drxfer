@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :folders, :except => :destroy
 
+  
+  
   devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout'} do
     get "/users/logout", :to => "devise/sessions#destroy"
   end
