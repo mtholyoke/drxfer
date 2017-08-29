@@ -7,6 +7,4 @@ config/ldap.yml
 config/environments/production.rb
 public/uploads/*
 .sass-cache/
-.ansible
-.vagrant
 .byebug_history
