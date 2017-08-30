@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe "agreements/edit.html.erb" do
   before(:each) do
+    @users = User.all
     @agreement = FactoryGirl.create(:agreement)
   end
 

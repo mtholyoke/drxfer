@@ -14,7 +14,9 @@ and access as appropriate.
 
 == Branches
 
-This application was developed in Ruby 1.9.3p0 with Rails 3.1.12. A working copy of that code is saved in the *rails3.1* branch.
+This application was developed in Ruby 1.9.2-p290 with Rails 3.1.12. A working copy of that code is saved in the *rails3.1* branch.
+
+The *rails3.2* branch ran in an environment with Ruby 2.0.0-p648 and Rails 3.2.0.
 
 == Dependency Status {<img src="https://gemnasium.com/svenaas/drxfer.png?travis"/>}[https://gemnasium.com/svenaas/drxfer]
 

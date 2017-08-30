@@ -27,9 +27,5 @@ describe FoldersController do
       put("/folders/1").should route_to("folders#update", :id => "1")
     end
 
-    it "routes to #destroy" do
-      delete("/folders/1").should route_to("folders#destroy", :id => "1")
-    end
-
   end
 end

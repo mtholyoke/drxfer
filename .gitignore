@@ -3,7 +3,9 @@ db/*.sqlite3
 log/*.log
 tmp/
 .DS_Store
+config/database.yml
 config/ldap.yml
 config/environments/production.rb
 public/uploads/*
 .sass-cache/
+.byebug_history

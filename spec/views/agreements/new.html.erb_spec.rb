@@ -6,6 +6,7 @@ describe "agreements/new.html.erb" do
       :name => "MyString",
       :description => "MyText"
     ).as_new_record)
+    @users = User.all
   end
 
   it "renders new agreement form" do

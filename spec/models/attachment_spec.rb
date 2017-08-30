@@ -1,5 +1,11 @@
 require 'spec_helper'
 
 describe Attachment do
-  pending "add some examples to (or delete) #{__FILE__}"
+	context "validations" do
+		it { should validate_presence_of(:asset) }
+	end
+
+	context "associations" do
+		it { should belong_to(:transfer) }
+	end
 end

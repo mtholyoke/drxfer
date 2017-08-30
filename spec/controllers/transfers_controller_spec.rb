@@ -20,143 +20,97 @@ require 'spec_helper'
 
 describe TransfersController do
 
+  before (:each) do
+    @user = FactoryGirl.create(:user)
+    sign_in @user
+    @folder = Folder.create!(name: "Test folder", path: "/folder/example", description: "Folder example")
+    @agreement = @folder.agreements.create!(name: "Test agreement")
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # Transfer. As you add validations to Transfer, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {
+      user: @user,
+      description: 'Description example',
+      username: 'example_username',
+      email: 'test@example.com',
+      first_name: 'Mister',
+      last_name: 'Example'
+    }
   end
 
-  before (:each) do
-    @user = FactoryGirl.create(:user)
-    sign_in @user
+  # used in testing "POST create" tests 
+  def create_valid_attributes
+    {
+      user_id: @user.id, 
+      description: 'Description example',
+      username: 'example_username', 
+      email: 'test@example.com',
+      first_name: 'Test',
+      last_name: 'Example'
+    }
   end
 
   describe "GET index" do
     it "assigns all transfers as @transfers" do
-      transfer = Transfer.create! valid_attributes
-      get :index
+      transfer = @agreement.transfers.create! valid_attributes
+      get :index, :agreement => @agreement, :agreement_id => @agreement.id
       assigns(:transfers).should eq([transfer])
     end
   end
 
   describe "GET show" do
     it "assigns the requested transfer as @transfer" do
-      transfer = Transfer.create! valid_attributes
-      get :show, :id => transfer.id.to_s
+      transfer = @agreement.transfers.create! valid_attributes
+      get :show, :agreement => @agreement, :agreement_id => @agreement.id, :id => transfer.id
       assigns(:transfer).should eq(transfer)
     end
   end
 
   describe "GET new" do
     it "assigns a new transfer as @transfer" do
-      get :new
+      get :new, :user => @user_id, :agreement => @agreement, :agreement_id => @agreement.id
       assigns(:transfer).should be_a_new(Transfer)
     end
   end
 
-  describe "GET edit" do
-    it "assigns the requested transfer as @transfer" do
-      transfer = Transfer.create! valid_attributes
-      get :edit, :id => transfer.id.to_s
-      assigns(:transfer).should eq(transfer)
-    end
-  end
-
   describe "POST create" do
-    describe "with valid params" do
+    context "with valid params" do
       it "creates a new Transfer" do
-        expect {
-          post :create, :transfer => valid_attributes
-        }.to change(Transfer, :count).by(1)
+        expect{ post :create, :agreement_id => @agreement.id, :transfer => create_valid_attributes }.to change(Transfer, :count).by(1)
       end
 
       it "assigns a newly created transfer as @transfer" do
-        post :create, :transfer => valid_attributes
+        post :create, :agreement_id => @agreement.id, :transfer => create_valid_attributes
         assigns(:transfer).should be_a(Transfer)
         assigns(:transfer).should be_persisted
       end
 
       it "redirects to the created transfer" do
-        post :create, :transfer => valid_attributes
-        response.should redirect_to(Transfer.last)
+        post :create, :agreement_id => @agreement.id, :transfer => create_valid_attributes
+        response.should redirect_to agreement_transfer_path(agreement_id: @agreement.id, id: Transfer.last.id)
       end
     end
 
-    describe "with invalid params" do
+    context "with invalid params" do
+
+      before do 
+        Transfer.any_instance.stub(:save).and_return(false)
+        post :create, :agreement => @agreement, :agreement_id => @agreement.id, :transfer => {}
+      end
+
       it "assigns a newly created but unsaved transfer as @transfer" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Transfer.any_instance.stub(:save).and_return(false)
-        post :create, :transfer => {}
         assigns(:transfer).should be_a_new(Transfer)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Transfer.any_instance.stub(:save).and_return(false)
-        post :create, :transfer => {}
+        # Transfer.any_instance.stub(:save).and_return(false)
         response.should render_template("new")
       end
     end
   end
-
-  describe "PUT update" do
-    describe "with valid params" do
-      it "updates the requested transfer" do
-        transfer = Transfer.create! valid_attributes
-        # Assuming there are no other transfers in the database, this
-        # specifies that the Transfer created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Transfer.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => transfer.id, :transfer => {'these' => 'params'}
-      end
-
-      it "assigns the requested transfer as @transfer" do
-        transfer = Transfer.create! valid_attributes
-        put :update, :id => transfer.id, :transfer => valid_attributes
-        assigns(:transfer).should eq(transfer)
-      end
-
-      it "redirects to the transfer" do
-        transfer = Transfer.create! valid_attributes
-        put :update, :id => transfer.id, :transfer => valid_attributes
-        response.should redirect_to(transfer)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns the transfer as @transfer" do
-        transfer = Transfer.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Transfer.any_instance.stub(:save).and_return(false)
-        put :update, :id => transfer.id.to_s, :transfer => {}
-        assigns(:transfer).should eq(transfer)
-      end
-
-      it "re-renders the 'edit' template" do
-        transfer = Transfer.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Transfer.any_instance.stub(:save).and_return(false)
-        put :update, :id => transfer.id.to_s, :transfer => {}
-        response.should render_template("edit")
-      end
-    end
-  end
-
-  describe "DELETE destroy" do
-    it "destroys the requested transfer" do
-      transfer = Transfer.create! valid_attributes
-      expect {
-        delete :destroy, :id => transfer.id.to_s
-      }.to change(Transfer, :count).by(-1)
-    end
-
-    it "redirects to the transfers list" do
-      transfer = Transfer.create! valid_attributes
-      delete :destroy, :id => transfer.id.to_s
-      response.should redirect_to(transfers_url)
-    end
-  end
-
 end

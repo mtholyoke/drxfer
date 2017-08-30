@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  devise :ldap_authenticatable, :trackable#, :validatable
+  devise :ldap_authenticatable, :trackable #, :validatable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :username, :password, :email, :first_name, :last_name, :admin
@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   default_scope :order => 'admin DESC, last_name ASC, first_name ASC'
 
   def get_ldap_data
-    return if Rails.env == 'test'
+   return if Rails.env.test? || Rails.env.development? 
     begin
       self.email      = Devise::LdapAdapter.get_ldap_param(self.username,"mail")
       self.first_name = Devise::LdapAdapter.get_ldap_param(self.username,"givenname")
