@@ -1,22 +1,16 @@
 == Welcome to Drxfer
 
-Drxfer (or DRXFER, or drxfer, or Dr. Xfer, or just Dr. X) is a Digital Records
-Transfer system, a web application created to allow record owners to transfer
-their born-digital records into a dropbox filesystem in accordance with
-pre-existing transfer agreements.
+Drxfer (or DRXFER, or drxfer, or Dr. Xfer, or just Dr. X) is a Digital Records Transfer system, a web application created to allow record owners to transfer their born-digital records into a dropbox filesystem in accordance with pre-existing transfer agreements.
 
-This application was created in 2011 to meet a need at Mount Holyoke College,
-where Archives & Special Collections arranges to receive digital records
-transfers from various departments, offices, and programs. The transferred
-records are stored on a file server, from which they will in due course be
-retrieved, processed, and delivered to a permanent home for preservation
-and access as appropriate.
+This application was created in 2011 to meet a need at Mount Holyoke College, where Archives & Special Collections arranges to receive digital records transfers from various departments, offices, and programs. The transferred records are stored on a file server, from which they will in due course be retrieved, processed, and delivered to a permanent home for preservation and access as appropriate.
 
 == Branches
 
 This application was developed in Ruby 1.9.2-p290 with Rails 3.1.12. A working copy of that code is saved in the *rails3.1* branch.
 
 The *rails3.2* branch ran in an environment with Ruby 2.0.0-p648 and Rails 3.2.0.
+
+The *rails4.1* branch ran in an environment with Ruby 2.2.2-p95 and Rails 4.1.2.
 
 == Dependency Status {<img src="https://gemnasium.com/svenaas/drxfer.png?travis"/>}[https://gemnasium.com/svenaas/drxfer]
 
