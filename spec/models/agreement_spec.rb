@@ -3,14 +3,11 @@ require 'spec_helper'
 describe Agreement do
 	context "validations" do
 		it "is valid with proper values" do    
-			agreement = Agreement.new :name =>"Name"
-			agreement.should be_valid
+			FactoryGirl.build(:agreement).should be_valid
 		end
 
 		it "is not valid without a name" do
-			agreement = Agreement.new 
-			agreement.should_not be_valid
-			agreement.errors_on(:name).should include "is required"
+			FactoryGirl.build(:agreement, :name => nil).should_not be_valid
 		end
   	end
 

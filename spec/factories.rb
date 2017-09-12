@@ -2,21 +2,13 @@ include ActionDispatch::TestProcess
 
 FactoryGirl.define do 
 	factory :user do 
-		trait :non_admin do 
-			username "test"
-			password "foo"
-			first_name "Test"
-			last_name "User"
-			email "user@example.com"
-			admin false 
-		end
+		username "test"
+		password "foo"
+		first_name "Test"
+		last_name "User"
+		email "user@example.com"
 
 		trait :admin do
-			username "test"
-			password "foo"
-			first_name "Test"
-			last_name "User"
-			email "user@example.com"
 			admin true
 		end
 	end

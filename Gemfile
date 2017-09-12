@@ -20,7 +20,7 @@ gem 'nested_form', "~> 0.2.1"
 # (See https://github.com/ryanb/nested_form/issues/95#issuecomment-2187551)
 
 group :test do
-  gem 'shoulda-matchers', '~> 3.0', require: false
+  gem 'shoulda-matchers', '~> 3.0'
 end
 
 group :development, :test do

@@ -53,6 +53,16 @@ describe TransfersController do
     }
   end
 
+  def invalid_params 
+    {
+      description: 'Description example',
+      username: 'example_username', 
+      email: 'test@example.com',
+      first_name: 'Test',
+      last_name: 'Example'
+    }
+  end
+
   describe "GET index" do
     it "assigns all transfers as @transfers" do
       transfer = @agreement.transfers.create! valid_attributes
@@ -98,7 +108,7 @@ describe TransfersController do
 
       before do 
         Transfer.any_instance.stub(:save).and_return(false)
-        post :create, :agreement => @agreement, :agreement_id => @agreement.id, :transfer => {}
+        post :create, :agreement => @agreement, :agreement_id => @agreement.id, :transfer => invalid_params
       end
 
       it "assigns a newly created but unsaved transfer as @transfer" do

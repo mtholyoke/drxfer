@@ -50,7 +50,7 @@ class TransfersController < ApplicationController
     @transfer.last_name = current_user.last_name
 
     respond_to do |format|
-      if @transfer.save
+      if @transfer.save  
         UserMailer.transfer_confirmation(@transfer).deliver
         UserMailer.transfer_notification(@transfer).deliver
         format.html { redirect_to([@agreement, @transfer], :notice => 'Transfer was successfully created.') }
