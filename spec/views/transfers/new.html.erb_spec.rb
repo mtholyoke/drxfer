@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "transfers/new.html.erb" do
   before(:each) do

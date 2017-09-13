@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "folders/show.html.erb" do
   before(:each) do
