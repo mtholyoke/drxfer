@@ -52,5 +52,4 @@ class Attachment < ActiveRecord::Base
             "Destination: #{Digest::MD5.hexdigest(File.read(destination))}" 
     end
   end
-  
 end

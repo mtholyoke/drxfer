@@ -44,8 +44,8 @@ class AgreementsController < ApplicationController
   # POST /agreements
   # POST /agreements.xml
   def create
-    @agreement = Agreement.new(params[:agreement])
-    @agreement.attributes = {'user_ids' => []}.merge(params[:agreement] || {})
+    @agreement = Agreement.new(agreement_params)
+    @agreement.attributes = {'user_ids' => []}.merge(agreement_params || {})
     
     @users = User.all
     @folders = Folder.all
@@ -65,13 +65,13 @@ class AgreementsController < ApplicationController
   # PUT /agreements/1.xml
   def update
     @agreement = Agreement.find(params[:id])
-    @agreement.attributes = {'user_ids' => []}.merge(params[:agreement] || {})
+    @agreement.attributes = {'user_ids' => []}.merge(agreement_params || {})
 
     @users = User.all
     @folders = Folder.all
 
-    respond_to do |format|
-      if @agreement.update_attributes(params[:agreement])
+    respond_to do |format|  
+      if @agreement.update_attributes(agreement_params)
         format.html { redirect_to(@agreement, :notice => 'Agreement was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -92,5 +92,11 @@ class AgreementsController < ApplicationController
       format.html { redirect_to(agreements_url) }
       format.xml  { head :ok }
     end
+  end
+
+  private 
+
+  def agreement_params
+    params.require(:agreement).permit(:name, :description, :user_ids, :folder_id)
   end
 end

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "home/index.html.erb" do
   before(:each) do
@@ -9,6 +9,6 @@ describe "home/index.html.erb" do
 
   it "renders a list of transfers" do
     render
-    rendered.should contain("Name")
+    rendered.should include("Name")
   end
 end

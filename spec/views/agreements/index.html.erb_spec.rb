@@ -1,15 +1,14 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "agreements/index.html.erb" do
   before(:each) do
     @agreement = FactoryGirl.create(:agreement)
     @agreements = Agreement.all
-    # FactoryGirl.crea  te(:agreement)
   end
 
   it "renders a list of agreements" do
     render
-    rendered.should contain("Name")
+    rendered.should include(@agreement.name)
   end
 
 end
