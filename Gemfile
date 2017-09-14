@@ -28,7 +28,6 @@ group :test do
 end
 
 group :development do
-  gem 'byebug'
   gem 'capybara', '~> 2.5'
   gem 'sqlite3'
   gem 'webrat'
