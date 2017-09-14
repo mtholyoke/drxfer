@@ -21,17 +21,18 @@ gem 'nested_form', "~> 0.2.1"
 
 group :test do
   gem 'shoulda-matchers', '~> 3.0'
-end
-
-group :development, :test do
-  gem 'byebug'
-  gem 'capybara', '~> 2.5'
-  gem 'sqlite3'
   gem 'rspec-rails', " ~> 3.4"
   gem 'test-unit'
   gem 'rspec-activemodel-mocks'
   gem 'factory_girl_rails', " ~> 4.5.0"
+end
+
+group :development do
+  gem 'byebug'
+  gem 'capybara', '~> 2.5'
+  gem 'sqlite3'
   gem 'webrat'
+  gem 'web-console', '~> 2.0'
 end
 
 group :production do
@@ -48,3 +49,5 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+
+gem 'byebug'

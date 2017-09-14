@@ -9,6 +9,6 @@ describe "home/index.html.erb" do
 
   it "renders a list of transfers" do
     render
-    rendered.should include("Name")
+    expect(rendered).to include("Name")
   end
 end

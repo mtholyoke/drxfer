@@ -8,7 +8,7 @@ describe "agreements/index.html.erb" do
 
   it "renders a list of agreements" do
     render
-    rendered.should include(@agreement.name)
+    expect(rendered).to include(@agreement.name)
   end
 
 end

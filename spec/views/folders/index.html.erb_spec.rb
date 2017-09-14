@@ -19,9 +19,9 @@ describe "folders/index.html.erb" do
   it "renders a list of folders" do
     render
 
-    rendered.should include("Name")
-    rendered.should include("Name2")
-    rendered.should include("MyText")
-    rendered.should include("MyText2")
+    expect(rendered).to include("Name")
+    expect(rendered).to include("Name2")
+    expect(rendered).to include("MyText")
+    expect(rendered).to include("MyText2")
   end
 end
