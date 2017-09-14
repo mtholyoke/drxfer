@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default :from => Drxfer::Application.config.email_notification_from_address
+  default :from => 'drxfer@example.com'
   
   def transfer_confirmation(transfer)
     @transfer = transfer
@@ -9,7 +9,7 @@ class UserMailer < ActionMailer::Base
   
   def transfer_notification(transfer)
     @transfer = transfer    
-    mail(:to => Drxfer::Application.config.transfer_notification_recipient_addresses, 
+    mail(:to => ['drxfer.admin@example.com'], 
          :subject => "A digital records transfer has been received")
   end
 end
