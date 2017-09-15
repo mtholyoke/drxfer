@@ -43,7 +43,7 @@ describe AgreementsController do
   describe "GET show" do
     it "assigns the requested agreement as @agreement" do
       agreement = Agreement.create! valid_attributes
-      get :show, :id => agreement.id.to_s
+      get :show, params: { :id => agreement.id.to_s }
       expect(assigns(:agreement)).to eq(agreement)
     end
   end
@@ -58,7 +58,7 @@ describe AgreementsController do
   describe "GET edit" do
     it "assigns the requested agreement as @agreement" do
       agreement = Agreement.create! valid_attributes
-      get :edit, :id => agreement.id.to_s
+      get :edit, params: { :id => agreement.id.to_s }
       expect(assigns(:agreement)).to eq(agreement)
     end
   end
@@ -67,18 +67,18 @@ describe AgreementsController do
     describe "with valid params" do
       it "creates a new Agreement" do
         expect {
-          post :create, :agreement => valid_attributes
+          post :create, params: { :agreement => valid_attributes }
         }.to change(Agreement, :count).by(1)
       end
 
       it "assigns a newly created agreement as @agreement" do
-        post :create, :agreement => valid_attributes
+        post :create, params: { :agreement => valid_attributes }
         expect(assigns(:agreement)).to be_a(Agreement)
         expect(assigns(:agreement)).to be_persisted
       end
 
       it "redirects to the created agreement" do
-        post :create, :agreement => valid_attributes
+        post :create, params: { :agreement => valid_attributes }
         expect(response).to redirect_to(Agreement.last)
       end
     end
@@ -86,13 +86,13 @@ describe AgreementsController do
     describe "with invalid params" do
       it "assigns a newly created but unsaved agreement as @agreement" do
         # Trigger the behavior that occurs when invalid params are submitted
-        post :create, :agreement => { :name => "" }
+        post :create, params: { :agreement => { :name => "" } }
         expect(assigns(:agreement)).to be_a_new(Agreement)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-        post :create, :agreement => { :name => "" }
+        post :create, params: { :agreement => { :name => "" } }
         expect(response).to render_template("new")
       end
     end
@@ -102,20 +102,20 @@ describe AgreementsController do
     describe "with valid params" do
       it "updates the requested agreement" do
         agreement = Agreement.create! valid_attributes
-        put :update, :id => agreement.id, :agreement => { name: "New name" }
+        put :update, params: { :id => agreement.id, :agreement => { name: "New name" } }
         agreement.reload
         expect(agreement).to have_attributes(:name => "New name")
       end
 
       it "assigns the requested agreement as @agreement" do
         agreement = Agreement.create! valid_attributes
-        put :update, :id => agreement.id, :agreement => { name: "New name" }
+        put :update, params: { :id => agreement.id, :agreement => { name: "New name" } }
         expect(assigns(:agreement)).to eq(agreement)
       end
 
       it "redirects to the agreement" do
         agreement = Agreement.create! valid_attributes
-        put :update, :id => agreement.id, :agreement => { name: "New name" }
+        put :update, params: { :id => agreement.id, :agreement => { name: "New name" } }
         expect(response).to redirect_to(agreement)
       end
     end
@@ -123,13 +123,13 @@ describe AgreementsController do
     describe "with invalid params" do
       it "assigns the agreement as @agreement" do
         agreement = Agreement.create! valid_attributes
-        put :update, :id => agreement.id.to_s, :agreement => { :name => "" }
+        put :update, params: { :id => agreement.id.to_s, :agreement => { :name => "" } }
         expect(assigns(:agreement)).to eq(agreement)
       end
 
       it "re-renders the 'edit' template" do
         agreement = Agreement.create! valid_attributes
-        put :update, :id => agreement.id.to_s, :agreement => { :name => "" }
+        put :update, params: { :id => agreement.id.to_s, :agreement => { :name => "" } }
         expect(response).to render_template("edit")
       end
     end
@@ -139,13 +139,13 @@ describe AgreementsController do
     it "destroys the requested agreement" do
       agreement = Agreement.create! valid_attributes
       expect {
-        delete :destroy, :id => agreement.id.to_s
+        delete :destroy, params: { :id => agreement.id.to_s }
       }.to change(Agreement, :count).by(-1)
     end
 
     it "redirects to the agreements list" do
       agreement = Agreement.create! valid_attributes
-      delete :destroy, :id => agreement.id.to_s
+      delete :destroy, params: { :id => agreement.id.to_s }
       expect(response).to redirect_to(agreements_url)
     end
   end
