@@ -1,11 +1,11 @@
 source 'http://rubygems.org'
 
-gem 'rails', '4.2.9'
+gem 'rails', '5.0.0'
 gem 'rake', '10.4.2'
 
 gem 'pg'
 
-gem "devise", "~> 3.1"
+gem "devise"
 gem "devise_ldap_authenticatable", "~> 0.6.1"
 
 gem 'carrierwave'
@@ -20,6 +20,7 @@ gem 'nested_form', "~> 0.2.1"
 # (See https://github.com/ryanb/nested_form/issues/95#issuecomment-2187551)
 
 group :test do
+  gem 'rails-controller-testing'
   gem 'shoulda-matchers', '~> 3.0'
   gem 'rspec-rails', " ~> 3.4"
   gem 'test-unit'
@@ -37,8 +38,8 @@ end
 group :production do
 end
 
-gem 'sass-rails', " ~> 4.0.0"
-gem 'coffee-rails', " ~> 4.0.0"
+gem 'sass-rails', " ~> 5.0.0"
+gem 'coffee-rails', " ~> 4.2.0"
 gem 'uglifier', ">= 1.3.0"
 
 gem 'jquery-rails'
