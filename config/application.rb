@@ -20,15 +20,12 @@ module Drxfer
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # Set base path for transfered files. All files will be copied into this path.    
+    # Do not swallow errors in after_commit/after_rollback callbacks.
+    config.active_record.raise_in_transactional_callbacks = true
+
+    # Set base path for transfered files. All files will be copied into this path.            
     # *** MAKE SURE *** to keep the base path description in sync so that it is described correctly.
     config.transfer_destination_base_path = Rails.root
     config.transfer_destination_base_path_description = "the application's root folder."
-
-    # Enable the asset pipeline
-    config.assets.enabled = true
-
-    # Version of your assets, change this if you want to expire all your assets
-    config.assets.version = '1.0'    
   end
 end

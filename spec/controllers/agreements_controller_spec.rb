@@ -123,16 +123,12 @@ describe AgreementsController do
     describe "with invalid params" do
       it "assigns the agreement as @agreement" do
         agreement = Agreement.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Agreement.any_instance.stub(:save).and_return(false)
         put :update, :id => agreement.id.to_s, :agreement => { :name => "" }
         expect(assigns(:agreement)).to eq(agreement)
       end
 
       it "re-renders the 'edit' template" do
         agreement = Agreement.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Agreement.any_instance.stub(:save).and_return(false)
         put :update, :id => agreement.id.to_s, :agreement => { :name => "" }
         expect(response).to render_template("edit")
       end

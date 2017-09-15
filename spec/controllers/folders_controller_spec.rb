@@ -90,16 +90,12 @@ describe FoldersController do
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved folder as @folder" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Folder.any_instance.stub(:save).and_return(false)
-        post :create, :folder => valid_attributes
+        post :create, :folder => { :path => "" }
         expect(assigns(:folder)).to be_a_new(Folder)
       end
 
       it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Folder.any_instance.stub(:save).and_return(false)
-        post :create, :folder => valid_attributes
+        post :create, :folder => { :path => "" }
         expect(response).to render_template("new")
       end
     end
@@ -134,16 +130,12 @@ describe FoldersController do
     describe "with invalid params" do
       it "assigns the folder as @folder" do
         folder = Folder.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Folder.any_instance.stub(:save).and_return(false)
         put :update, :id => folder.id.to_s, :folder => { path: "" }
         expect(assigns(:folder)).to eq(folder)
       end
 
       it "re-renders the 'edit' template" do
         folder = Folder.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Folder.any_instance.stub(:save).and_return(false)
         put :update, :id => folder.id.to_s, :folder => { path: "" }
         expect(response).to render_template("edit")
       end

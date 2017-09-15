@@ -12,6 +12,8 @@ The *rails3.2* branch ran in an environment with Ruby 2.0.0-p648 and Rails 3.2.0
 
 The *rails4.1* branch ran in an environment with Ruby 2.2.2-p95 and Rails 4.1.2.
 
+The *rails4.2* branch ran in an environment with Ruby 2.2.2-p95 and Rails 4.2.9.
+
 == Dependency Status {<img src="https://gemnasium.com/svenaas/drxfer.png?travis"/>}[https://gemnasium.com/svenaas/drxfer]
 
 == License
