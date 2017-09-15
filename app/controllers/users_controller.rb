@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_filter :admin_required!
+  before_action :admin_required!
   
   # GET /users
   # GET /users.xml

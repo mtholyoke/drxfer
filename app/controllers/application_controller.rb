@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   end
   protect_from_forgery
   
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def admin_required!
     (user_signed_in? && current_user.admin?) || non_admin_access_denied
