@@ -66,7 +66,7 @@ describe TransfersController do
   describe "GET index" do
     it "assigns all transfers as @transfers" do
       transfer = @agreement.transfers.create! valid_attributes
-      get :index, :agreement => @agreement, :agreement_id => @agreement.id
+      get :index, params: { :agreement => @agreement, :agreement_id => @agreement.id }
       expect(assigns(:transfers)).to eq([transfer])
     end
   end
@@ -74,14 +74,14 @@ describe TransfersController do
   describe "GET show" do
     it "assigns the requested transfer as @transfer" do
       transfer = @agreement.transfers.create! valid_attributes
-      get :show, :agreement => @agreement, :agreement_id => @agreement.id, :id => transfer.id
+      get :show, params: { :agreement => @agreement, :agreement_id => @agreement.id, :id => transfer.id }
       expect(assigns(:transfer)).to eq(transfer)
     end
   end
 
   describe "GET new" do
     it "assigns a new transfer as @transfer" do
-      get :new, :user => @user_id, :agreement => @agreement, :agreement_id => @agreement.id
+      get :new, params: { :user => @user_id, :agreement => @agreement, :agreement_id => @agreement.id }
       expect(assigns(:transfer)).to be_a_new(Transfer)
     end
   end
@@ -89,17 +89,20 @@ describe TransfersController do
   describe "POST create" do
     context "with valid params" do
       it "creates a new Transfer" do
-        expect{ post :create, :agreement_id => @agreement.id, :transfer => create_valid_attributes }.to change(Transfer, :count).by(1)
+        expect{ 
+          post :create, 
+          params: { :agreement_id => @agreement.id, :transfer => create_valid_attributes } 
+        }.to change(Transfer, :count).by(1)
       end
 
       it "assigns a newly created transfer as @transfer" do
-        post :create, :agreement_id => @agreement.id, :transfer => create_valid_attributes
+        post :create, params: { :agreement_id => @agreement.id, :transfer => create_valid_attributes }
         expect(assigns(:transfer)).to be_a(Transfer)
         expect(assigns(:transfer)).to be_persisted
       end
 
       it "redirects to the created transfer" do
-        post :create, :agreement_id => @agreement.id, :transfer => create_valid_attributes
+        post :create, params: { :agreement_id => @agreement.id, :transfer => create_valid_attributes }
         expect(response).to redirect_to agreement_transfer_path(agreement_id: @agreement.id, id: Transfer.last.id)
       end
     end
