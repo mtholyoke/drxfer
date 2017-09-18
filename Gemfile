@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '5.0.0'
+gem 'rails', '5.1.0'
 gem 'rake', '10.4.2'
 
 gem 'pg'
@@ -33,6 +33,7 @@ group :development do
   gem 'sqlite3'
   gem 'webrat'
   gem 'web-console', '~> 2.0'
+  gem 'listen'
 end
 
 group :production do

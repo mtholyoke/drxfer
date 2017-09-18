@@ -45,7 +45,7 @@ class AgreementsController < ApplicationController
   # POST /agreements.xml
   def create
     @agreement = Agreement.new(agreement_params)
-    @agreement.attributes = params[:agreement].to_h
+    @agreement.attributes = agreement_params.to_h
     
     @users = User.all
     @folders = Folder.all
@@ -65,7 +65,7 @@ class AgreementsController < ApplicationController
   # PUT /agreements/1.xml
   def update
     @agreement = Agreement.find(params[:id])
-    @agreement.attributes = params[:agreement].to_h
+    @agreement.attributes = agreement_params.to_h
 
     @users = User.all
     @folders = Folder.all
