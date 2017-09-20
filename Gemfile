@@ -6,7 +6,7 @@ gem 'rake', '12.1.0'
 gem 'pg'
 
 gem "devise"
-gem "devise_ldap_authenticatable", "~> 0.6.1"
+gem "devise_ldap_authenticatable", "~> 0.8.5"
 
 gem 'carrierwave'
 
