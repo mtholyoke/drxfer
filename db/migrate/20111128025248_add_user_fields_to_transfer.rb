@@ -1,4 +1,4 @@
-class AddUserFieldsToTransfer < ActiveRecord::Migration
+class AddUserFieldsToTransfer < ActiveRecord::Migration[4.2]
   def self.up
     add_column :transfers, :user_id, :integer
     add_column :transfers, :username, :string

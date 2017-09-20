@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20111207023448) do
   enable_extension "plpgsql"
 
   create_table "agreements", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
+    t.string "name"
     t.text "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -32,16 +32,16 @@ ActiveRecord::Schema.define(version: 20111207023448) do
 
   create_table "attachments", id: :serial, force: :cascade do |t|
     t.integer "transfer_id"
-    t.string "asset", limit: 255
-    t.string "content_type", limit: 255
+    t.string "asset"
+    t.string "content_type"
     t.integer "file_size"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string "md5", limit: 255
+    t.string "md5"
   end
 
   create_table "folders", id: :serial, force: :cascade do |t|
-    t.string "path", limit: 255
+    t.string "path"
     t.string "name", limit: 16
     t.text "description"
     t.datetime "created_at"
@@ -54,22 +54,22 @@ ActiveRecord::Schema.define(version: 20111207023448) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "user_id"
-    t.string "username", limit: 255
-    t.string "email", limit: 255
-    t.string "first_name", limit: 255
-    t.string "last_name", limit: 255
+    t.string "username"
+    t.string "email"
+    t.string "first_name"
+    t.string "last_name"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
-    t.string "username", limit: 255
-    t.string "email", limit: 255
-    t.string "first_name", limit: 255
-    t.string "last_name", limit: 255
+    t.string "username"
+    t.string "email"
+    t.string "first_name"
+    t.string "last_name"
     t.integer "sign_in_count", default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip", limit: 255
-    t.string "last_sign_in_ip", limit: 255
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean "admin", default: false

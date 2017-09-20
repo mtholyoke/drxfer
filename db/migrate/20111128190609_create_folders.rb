@@ -1,4 +1,4 @@
-class CreateFolders < ActiveRecord::Migration
+class CreateFolders < ActiveRecord::Migration[4.2]
   def self.up
     create_table :folders do |t|
       t.string :path, :unique => true
@@ -7,12 +7,12 @@ class CreateFolders < ActiveRecord::Migration
 
       t.timestamps
     end
-    
+
     add_column :agreements, :folder_id, :integer
   end
 
   def self.down
     remove_column :agreements, :folder_id
-    drop_table :folders    
+    drop_table :folders
   end
 end
