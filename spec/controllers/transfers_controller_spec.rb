@@ -105,7 +105,17 @@ describe TransfersController do
         post :create, params: { :agreement_id => @agreement.id, :transfer => create_valid_attributes }
         expect(response).to redirect_to agreement_transfer_path(agreement_id: @agreement.id, id: Transfer.last.id)
       end
+
+      it "can upload a file" do 
+        post :create, params: { 
+          :agreement_id => @agreement.id, 
+          :transfer => create_valid_attributes, 
+          :upload => fixture_file_upload('files/test_file.txt', 'test/txt') 
+        }
+        expect(response).to be_success
+      end
     end
+
 
     # context "with invalid params" do
 
