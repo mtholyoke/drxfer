@@ -51,4 +51,9 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  # Enable the console in a VM-based dev environment
+  if Rails.env.development? && ENV.key?('VM_HOST_ADDRESS')
+    config.web_console.whitelisted_ips = ENV['VM_HOST_ADDRESS']
+  end
 end
