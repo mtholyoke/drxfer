@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
-gem 'rails', '5.1.0'
-gem 'rake', '10.4.2'
+gem 'rails', '5.1.4'
+gem 'rake', '12.1.0'
 
 gem 'pg'
 
@@ -20,6 +20,7 @@ gem 'nested_form', "~> 0.2.1"
 # (See https://github.com/ryanb/nested_form/issues/95#issuecomment-2187551)
 
 group :test do
+  gem 'sqlite3'
   gem 'rails-controller-testing'
   gem 'shoulda-matchers', '~> 3.0'
   gem 'rspec-rails', " ~> 3.4"
@@ -30,7 +31,6 @@ end
 
 group :development do
   gem 'capybara', '~> 2.5'
-  gem 'sqlite3'
   gem 'webrat'
   gem 'web-console', '~> 2.0'
   gem 'listen'
