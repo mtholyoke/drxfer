@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
       self.last_name  = Devise::LdapAdapter.get_ldap_param(self.username,"sn")
     rescue
       self.errors[:username] ="#{self.username} not found"
-      return false
+      throw(:abort)
     end
   end
 

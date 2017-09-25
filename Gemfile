@@ -16,6 +16,7 @@ gem 'exception_notification', ">= 4.0.0"
 
 gem 'json', '>= 1.7.7'
 
+# for nested forms
 gem "cocoon"
 
 group :test do
