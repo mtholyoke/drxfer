@@ -16,8 +16,7 @@ gem 'exception_notification', ">= 4.0.0"
 
 gem 'json', '>= 1.7.7'
 
-gem 'nested_form', "~> 0.2.1"
-# (See https://github.com/ryanb/nested_form/issues/95#issuecomment-2187551)
+gem "cocoon"
 
 group :test do
   gem 'sqlite3'
@@ -26,7 +25,7 @@ group :test do
   gem 'rspec-rails', " ~> 3.4"
   gem 'test-unit'
   gem 'rspec-activemodel-mocks'
-  gem 'factory_girl_rails', " ~> 4.5.0"
+  gem 'factory_girl_rails'
 end
 
 group :development do

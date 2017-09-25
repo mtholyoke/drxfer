@@ -3,11 +3,11 @@ include ActionDispatch::TestProcess
 FactoryGirl.define do 
 	factory :user do 
 		username "test"
-		password "foo"
+		password "test"
 		first_name "Test"
 		last_name "User"
 		email "user@example.com"
-
+		
 		trait :admin do
 			admin true
 		end

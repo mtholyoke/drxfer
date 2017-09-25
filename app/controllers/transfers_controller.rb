@@ -65,6 +65,6 @@ class TransfersController < ApplicationController
   private
 
   def transfer_params
-      params.require(:transfer).permit(:description, :username, :email, :first_name, :last_name, :user, attachments_attributes: [:asset])  
+      params.require(:transfer).permit(:description, :username, :email, :first_name, :last_name, :user, attachments_attributes: Attachment.attribute_names.map(&:to_sym))  
   end
 end
