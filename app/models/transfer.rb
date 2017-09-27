@@ -2,7 +2,7 @@ class Transfer < ActiveRecord::Base
   belongs_to :agreement
   belongs_to :user
   has_many :attachments
-  accepts_nested_attributes_for :attachments, :reject_if => :all_blank
+  accepts_nested_attributes_for :attachments, reject_if: :all_blank
   
   validates_presence_of :agreement, :user, :description, :username, :email, :first_name, :last_name
   

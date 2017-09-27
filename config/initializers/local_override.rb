@@ -9,8 +9,11 @@ module Devise
 
       def authenticate!
         if params[:user] 
-          if params[:user][:username] == "test" && params[:user][:password] == "test"
-            user = User.first
+          if params[:user][:username] == "admin" && params[:user][:password] == "admin"
+            user = User.where(admin: true).first
+            success!(user)
+          elsif params[:user][:username] == "test" && params[:user][:password] == "test"
+            user = User.where(admin: false).first
             success!(user)
           else
             fail(:invalid)

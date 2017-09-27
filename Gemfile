@@ -1,12 +1,12 @@
 source 'http://rubygems.org'
 
-gem 'rails', '4.2.9'
-gem 'rake', '10.4.2'
+gem 'rails', '5.1.4'
+gem 'rake', '12.1.0'
 
 gem 'pg'
 
-gem "devise", "~> 3.1"
-gem "devise_ldap_authenticatable", "~> 0.6.1"
+gem "devise"
+gem "devise_ldap_authenticatable", "~> 0.8.5"
 
 gem 'carrierwave'
 
@@ -16,29 +16,31 @@ gem 'exception_notification', ">= 4.0.0"
 
 gem 'json', '>= 1.7.7'
 
-gem 'nested_form', "~> 0.2.1"
-# (See https://github.com/ryanb/nested_form/issues/95#issuecomment-2187551)
+# for nested forms
+gem "cocoon"
 
 group :test do
+  gem 'sqlite3'
+  gem 'rails-controller-testing'
   gem 'shoulda-matchers', '~> 3.0'
   gem 'rspec-rails', " ~> 3.4"
   gem 'test-unit'
   gem 'rspec-activemodel-mocks'
-  gem 'factory_girl_rails', " ~> 4.5.0"
+  gem 'factory_girl_rails'
 end
 
 group :development do
   gem 'capybara', '~> 2.5'
-  gem 'sqlite3'
   gem 'webrat'
   gem 'web-console', '~> 2.0'
+  gem 'listen'
 end
 
 group :production do
 end
 
-gem 'sass-rails', " ~> 4.0.0"
-gem 'coffee-rails', " ~> 4.0.0"
+gem 'sass-rails', " ~> 5.0.0"
+gem 'coffee-rails', " ~> 4.2.0"
 gem 'uglifier', ">= 1.3.0"
 
 gem 'jquery-rails'
@@ -47,6 +49,6 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+gem 'jbuilder'
 
 gem 'byebug'

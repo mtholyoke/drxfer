@@ -3,11 +3,11 @@ include ActionDispatch::TestProcess
 FactoryGirl.define do 
 	factory :user do 
 		username "test"
-		password "foo"
+		password "test"
 		first_name "Test"
 		last_name "User"
 		email "user@example.com"
-
+		
 		trait :admin do
 			admin true
 		end
@@ -16,19 +16,22 @@ FactoryGirl.define do
 	factory :folder do 
 		path "path/to/test"
 	    name "Test Folder"
-	    description "MyText"
 	end
 
 	factory :attachment do
-    	asset { fixture_file_upload(Rails.root.to_s + '/spec/fixtures/files/test_file.txt', 'text/txt') }
-    	transfer_id 1
+		asset Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/files/test_file.txt')))
+		transfer_id 1
 	end
 
 	factory :agreement do 
 		name "Test agreement"
 	end
 
-	factory :assignment do
-
+	factory :transfer do
+        description 'Description example'
+        username 'example_username'
+        email 'test@example.com'
+        first_name 'Mister'
+        last_name 'Example'
 	end
 end

@@ -1,4 +1,4 @@
-class CreateAgreements < ActiveRecord::Migration
+class CreateAgreements < ActiveRecord::Migration[4.2]
   def self.up
     create_table :agreements do |t|
       t.string :name

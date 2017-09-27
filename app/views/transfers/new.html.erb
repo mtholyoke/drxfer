@@ -1,6 +1,6 @@
 <h1>New transfer</h1>
 
-<%= nested_form_for([@agreement,@transfer], :html => {:multipart => true}) do |f| %>
+<%= form_for([@agreement,@transfer], :html => {:multipart => true}) do |f| %>
   <% if @transfer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@transfer.errors.count, "error") %> prohibited this transfer from being saved:</h2>
@@ -25,12 +25,9 @@
   
   <div class="field">
     <%= f.fields_for :attachments do |attachment| %>
-      <p>
-        <%= attachment.file_field :asset, :required => 'required' %>
-        <%= attachment.link_to_remove "Remove this file" %>
-      </p>
+      <% render 'attachment_fields', f: attachment %>
     <% end %>
-    <p><%= f.link_to_add "Add file", :attachments %></p>
+    <p><%= link_to_add_association "Add file", f, :attachments %></p>
   </div>  
   
   <p>Note: If you are transferring large files and/or are using a slower network connection it may take some time for the transfer to finish. Please be patient and wait for your transfer to complete.</p>
