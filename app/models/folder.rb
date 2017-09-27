@@ -10,32 +10,31 @@ class Folder < ActiveRecord::Base
   validates_length_of :path, :minimum => 1
   validates_format_of :path, :without => /\.\./, :message => 'cannot contain ..'
   validate :path_exists, :path_is_a_folder, :path_writable
-  
-  default_scope  { order(:name => :asc) }  
-  
+
+  default_scope  { order(:name => :asc) }
+
   def name_with_description
     name + ' (' + description + ')'
   end
-  
+
   # Remove leading and trailing slashes and whitespace
   def normalize_path
-    byebug
     path.strip!
     path.gsub!(/[\/\\]+$/, '')
     path.gsub!(/^[\/\\]+/, '')
-  end  
-    
+  end
+
   def full_path
     Drxfer::Application.config.transfer_destination_base_path.to_s + "/" + path
   end
-  
+
   def path_exists
     if ! File.exist?(full_path)
-      begin  
+      begin
         FileUtils.mkdir_p(full_path)
       rescue SystemCallError => e
-        errors.add(:path, "does not exist and could not be created: #{e.message}") 
-        raise ActiveRecord::Rollback 
+        errors.add(:path, "does not exist and could not be created: #{e.message}")
+        raise ActiveRecord::Rollback
       end
     end
   end
