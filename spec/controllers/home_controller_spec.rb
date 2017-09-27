@@ -1,13 +1,9 @@
 require 'rails_helper'
 
 describe HomeController do
-  # before (:each) do
-  #   @user = FactoryGirl.create(:user)
-  #   sign_in @user
-  # end
 
   describe "GET 'index'" do
-    describe "when user is signed in" do 
+    context "when user is signed in" do 
       it "should be successful" do
         @user = FactoryGirl.create(:user)
         sign_in @user
@@ -16,7 +12,7 @@ describe HomeController do
       end
     end
 
-    describe "when user is not signed in" do
+    context "when user is not signed in" do
       it "should not be successful" do 
         get 'index'
         expect(response).to_not be_success

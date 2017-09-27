@@ -19,6 +19,7 @@ class Folder < ActiveRecord::Base
   
   # Remove leading and trailing slashes and whitespace
   def normalize_path
+    byebug
     path.strip!
     path.gsub!(/[\/\\]+$/, '')
     path.gsub!(/^[\/\\]+/, '')

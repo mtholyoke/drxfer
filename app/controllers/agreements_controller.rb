@@ -46,7 +46,7 @@ class AgreementsController < ApplicationController
   def create
     @agreement = Agreement.new(agreement_params)
     @agreement.attributes = agreement_params.to_h
-    
+
     @users = User.all
     @folders = Folder.all
 
