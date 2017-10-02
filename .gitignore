@@ -12,3 +12,5 @@ db/*.sqlite3
 log/*.log
 public/uploads/*
 tmp/
+app/assets/images/favicon.ico
+app/assets/images/mhc_logo.png
