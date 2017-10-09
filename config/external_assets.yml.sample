@@ -1,7 +1,12 @@
+# external_assets.yml can be used to store sources of external assets 
+# Be sure to include the relevant tags in application.html.erb, like so: 
+# <%= javascript_include_tag "#{ENV['external_asset_js_src']}" if File.exists?("config/external_assets.yml") %> 
+
+# To get started on using this file: 
 # Rename this file to external_assets.yml
 # This file should be listed in .gitignore
-# Each entry gets set as a local environment variable.
+# Each entry gets set as a local environment variable through application.rb.
 
 # For example, setting:
-# external_asset_js: 'asset_source'
-# makes 'asset_source' available as ENV["external_asset_js"]
+# external_asset_js_src: 'asset_source'
+# makes 'asset_source' available as ENV["external_asset_js_src"]

@@ -4,8 +4,8 @@
   <title>Digital Records Transfer System</title>
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %> 
-  <!-- Modify the environment variable as necessary -->
-  <%= javascript_include_tag "#{ENV['external_asset_js']}" if File.exists?("config/external_assets.yml") %> 
+  <!-- Modify the environment variable key as necessary -->
+  <%= javascript_include_tag "#{ENV['external_asset_js_src']}" if File.exists?("config/external_assets.yml") %> 
   <%= favicon_link_tag if File.exist?("app/assets/images/favicon.ico") %>
   <%= csrf_meta_tag %>
 </head>
