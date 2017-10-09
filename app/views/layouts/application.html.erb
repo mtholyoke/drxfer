@@ -3,8 +3,9 @@
 <head>
   <title>Digital Records Transfer System</title>
   <%= stylesheet_link_tag "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= render "layouts/favicon" %>
+  <%= javascript_include_tag "application" %> 
+  <%= javascript_include_tag "#{ENV['external_asset_js']}" %> 
+  <%= favicon_link_tag if File.exist?("app/assets/images/favicon.ico") %>
   <%= csrf_meta_tag %>
 </head>
 <body>

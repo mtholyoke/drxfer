@@ -1,0 +1,7 @@
+# Rename this file to external_assets.yml
+# This file should be listed in .gitignore
+# Each entry gets set as a local environment variable.
+
+# For example, setting:
+# external_asset_js: 'asset_source'
+# makes 'asset_source' available as ENV["external_asset_js"]
