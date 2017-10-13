@@ -1,0 +1,12 @@
+<% unless Drxfer::Application.config.external_assets.nil? %>
+  <% if Drxfer::Application.config.external_assets.key? "stylesheets" %>
+    <% Drxfer::Application.config.external_assets["stylesheets"].each do |external_css| %>
+      <%= stylesheet_link_tag external_css, :media => "all" %>
+    <% end %>
+  <% end %>
+  <% if Drxfer::Application.config.external_assets.key? "javascripts" %>
+    <% Drxfer::Application.config.external_assets["javascripts"].each do |external_js| %>
+      <%= javascript_include_tag external_js %>
+    <% end %>
+  <% end %>
+<% end %>
