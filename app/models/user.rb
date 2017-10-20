@@ -6,21 +6,22 @@ class User < ActiveRecord::Base
   has_many :transfers
   has_many :agreements, :through => :assignments
 
-  before_save :get_ldap_data
+  # before_save :get_ldap_data
 
   default_scope  { order(:admin => :desc, :last_name => :asc, :first_name => :asc) }
 
-  def get_ldap_data
-   return if Rails.env.test? || Rails.env.development? 
-    begin
-      self.email      = Devise::LdapAdapter.get_ldap_param(self.username,"mail")
-      self.first_name = Devise::LdapAdapter.get_ldap_param(self.username,"givenname")
-      self.last_name  = Devise::LdapAdapter.get_ldap_param(self.username,"sn")
-    rescue
-      self.errors[:username] ="#{self.username} not found"
-      throw(:abort)
-    end
-  end
+  # TODO: figure out why these were nil after LDAP server switch
+  # def get_ldap_data
+  #   return if Rails.env.test? || Rails.env.development?
+  #   begin
+  #     self.email      = Devise::LDAP::Adapter.get_ldap_param(self.username, "mail").first
+  #     self.first_name = Devise::LDAP::Adapter.get_ldap_param(self.username,"givenname").first
+  #     self.last_name  = Devise::LDAP::Adapter.get_ldap_param(self.username,"sn").first
+  #   rescue
+  #     self.errors.add(:username, "#{self.username} missing LDAP parameter(s)")
+  #     throw(:abort)
+  #   end
+  # end
 
   def full_name
     first_name + ' ' + last_name

@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20111207023448) do
   enable_extension "plpgsql"
 
   create_table "agreements", force: :cascade do |t|
-    t.string "name"
+    t.string "name", limit: 255
     t.text "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -32,16 +32,16 @@ ActiveRecord::Schema.define(version: 20111207023448) do
 
   create_table "attachments", force: :cascade do |t|
     t.integer "transfer_id"
-    t.string "asset"
-    t.string "content_type"
+    t.string "asset", limit: 255
+    t.string "content_type", limit: 255
     t.integer "file_size"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string "md5"
+    t.string "md5", limit: 255
   end
 
   create_table "folders", force: :cascade do |t|
-    t.string "path"
+    t.string "path", limit: 255
     t.string "name", limit: 16
     t.text "description"
     t.datetime "created_at"
@@ -54,22 +54,22 @@ ActiveRecord::Schema.define(version: 20111207023448) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "user_id"
-    t.string "username"
-    t.string "email"
-    t.string "first_name"
-    t.string "last_name"
+    t.string "username", limit: 255
+    t.string "email", limit: 255
+    t.string "first_name", limit: 255
+    t.string "last_name", limit: 255
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "email"
-    t.string "first_name"
-    t.string "last_name"
+    t.string "username", limit: 255
+    t.string "email", limit: 255
+    t.string "first_name", limit: 255
+    t.string "last_name", limit: 255
     t.integer "sign_in_count", default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip"
-    t.string "last_sign_in_ip"
+    t.string "current_sign_in_ip", limit: 255
+    t.string "last_sign_in_ip", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean "admin", default: false

@@ -2,8 +2,10 @@
 <html>
 <head>
   <title>Digital Records Transfer System</title>
+  <%= render "layouts/external_assets" %>
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= favicon_link_tag if File.exist?("app/assets/images/favicon.ico") %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -20,7 +22,7 @@
 </p>
 <h1><%= link_to "Digital Records Transfer System", root_url %></h1>
 <p id="notice"><%= notice %></p>
-<p id="alert"><%= alert %></p>  
+<p id="alert"><%= alert %></p>
 <%= yield %>
 </div>
 </body>

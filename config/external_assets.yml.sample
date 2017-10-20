@@ -1,0 +1,20 @@
+### external_assets.yml can be used to store sources of external assets.
+
+### stylesheets and javascripts are both optional, but if present, are expected to be lists.
+
+### Available in every environment:
+# stylesheets:
+#  - https://example.com/style.css
+# javascripts:
+#  - https://example.com/script.js
+
+### Environment-specific assets:
+# development:
+#   stylesheets:
+#     - https://example.com/dev/style.css
+# production:
+#   stylesheets:
+#     - https://example.com/prod/style.css
+#   javascripts:
+#     - https://example.com/prod/script1.js
+#     - https://example.com/prod/script2.js

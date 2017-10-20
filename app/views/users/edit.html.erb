@@ -12,12 +12,19 @@
       </ul>
     </div>
   <% end %>
-
-  <p>
-    <b><%= @user.first_name %> <%= @user.last_name %></b><br/>
-    <%= @user.email %>
-  </p>  
   
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email, :value => @user.email %>
+  </div>
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, :value => @user.first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, :value => @user.last_name %>
+  </div>
   <div class="field">
     <%= f.label :admin, "Transfer Form Admin" %>
     <%= f.check_box :admin %>
