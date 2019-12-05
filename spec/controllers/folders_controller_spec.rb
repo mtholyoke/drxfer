@@ -21,7 +21,7 @@ require 'rails_helper'
 describe FoldersController do
   # Creates a user to sign in before each test because authenticate_user! is called before action
   before (:each) do
-    @user = FactoryGirl.create(:user)
+    @user = create(:user)
     sign_in @user
   end
 

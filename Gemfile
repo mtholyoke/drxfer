@@ -20,9 +20,9 @@ gem 'json', '>= 1.7.7'
 gem "cocoon"
 
 group :test do
-  gem 'sqlite3'
+  gem 'sqlite3', '~> 1.3', '< 1.4'
   gem 'rails-controller-testing'
-  gem 'shoulda-matchers', '~> 3.0'
+  gem 'shoulda-matchers'#, '~> 3.0'
   gem 'rspec-rails'#, " ~> 3.4"
   gem 'test-unit'
   gem 'rspec-activemodel-mocks'

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "agreements/index.html.erb" do
   before(:each) do
-    @agreement = FactoryGirl.create(:agreement)
+    @agreement = create(:agreement)
     @agreements = Agreement.all
   end
 

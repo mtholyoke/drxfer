@@ -5,7 +5,7 @@ describe HomeController do
   describe "GET 'index'" do
     context "when user is signed in" do 
       it "should be successful" do
-        @user = FactoryGirl.create(:user)
+        @user = create(:user)
         sign_in @user
         get 'index'
         expect(response).to be_success
