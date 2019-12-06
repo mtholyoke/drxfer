@@ -22,6 +22,7 @@ gem 'json', '>= 1.7.7'
 gem "cocoon"
 
 group :test do
+  gem 'sqlite3'
   gem 'rails-controller-testing'
   gem 'shoulda-matchers', '~> 3.0'
   gem 'rspec-rails', " ~> 3.4"
