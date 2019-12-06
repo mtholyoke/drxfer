@@ -136,6 +136,9 @@ GEM
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
+    passenger (5.3.7)
+      rack
+      rake (>= 0.8.1)
     pg (0.21.0)
     power_assert (1.1.0)
     public_suffix (3.0.0)
@@ -266,7 +269,8 @@ DEPENDENCIES
   jquery-rails
   json (>= 1.7.7)
   listen
-  pg
+  passenger (~> 5.3.2)
+  pg (~> 0.21)
   rails (= 5.1.4)
   rails-controller-testing
   rake (= 12.1.0)
@@ -282,4 +286,4 @@ DEPENDENCIES
   webrat
 
 BUNDLED WITH
-   1.15.4
+   1.17.3
