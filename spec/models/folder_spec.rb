@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Folder do
 	context "validations" do
-		subject { FactoryGirl.create :folder }
+		subject { create :folder }
  		it { should validate_presence_of(:name) }
 		# it { should validate_presence_of(:path) } 
 		# it { should validate_uniqueness_of(:name) }
