@@ -3,10 +3,12 @@ source 'http://rubygems.org'
 gem 'rails', '~> 5.2.3'
 gem 'rake', '12.1.0'
 
-gem 'pg', '~> 1.1.4'
+gem 'pg'
 
 gem "devise", '~> 4.7.1'
 gem "devise_ldap_authenticatable", "~> 0.8.6"
+
+gem 'passenger', '~> 5.3.2', require: 'phusion_passenger/rack_handler'
 
 gem 'carrierwave', '~> 2.0.2'
 
