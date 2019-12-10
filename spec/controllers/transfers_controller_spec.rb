@@ -21,10 +21,10 @@ require 'rails_helper'
 describe TransfersController do
 
   before (:each) do
-    @user = FactoryGirl.create(:user)
+    @user = create(:user)
     sign_in @user
-    folder = FactoryGirl.build(:folder)
-    @agreement = FactoryGirl.create(:agreement, folder: folder)
+    folder = build(:folder)
+    @agreement = create(:agreement, folder: folder)
   end
 
   describe "GET index" do

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "agreements/show.html.erb" do
   before(:each) do
-    @user = FactoryGirl.create(:user)
+    @user = create(:user)
     sign_in @user
     @agreement = @user.agreements.create(name: "Name")
   end
