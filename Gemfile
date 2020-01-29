@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 5.2.3'
+gem 'rails', '~> 6.0'
 gem 'rake', '12.1.0'
 
 gem 'pg'
@@ -25,7 +25,7 @@ group :test do
   gem 'sqlite3', '~> 1.3', '< 1.4'
   gem 'rails-controller-testing'
   gem 'shoulda-matchers', '~> 4.1.2'
-  gem 'rspec-rails', " ~> 3.9.0"
+  gem 'rspec-rails', " ~> 4.0.0.beta3 "
   gem 'test-unit', '~> 3.3.4'
   gem 'rspec-activemodel-mocks', '~> 1.1.0'
   gem 'factory_bot_rails', '~> 5.1.1'
