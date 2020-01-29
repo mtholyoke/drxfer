@@ -70,8 +70,8 @@ class AgreementsController < ApplicationController
     @users = User.all
     @folders = Folder.all
 
-    respond_to do |format|  
-      if @agreement.update_attributes(agreement_params)
+    respond_to do |format|
+      if @agreement.update(agreement_params)
         format.html { redirect_to(@agreement, :notice => 'Agreement was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -94,7 +94,7 @@ class AgreementsController < ApplicationController
     end
   end
 
-  private 
+  private
 
   def agreement_params
     params.require(:agreement).permit(:name, :description, :folder_id, { user_ids:[] })
