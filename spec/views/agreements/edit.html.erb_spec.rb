@@ -3,7 +3,7 @@ require 'rails_helper'
 describe "agreements/edit.html.erb" do
   before(:each) do
     @users = User.all
-    @agreement = FactoryGirl.create(:agreement)
+    @agreement = create(:agreement)
   end
 
   it "renders the edit agreement form" do

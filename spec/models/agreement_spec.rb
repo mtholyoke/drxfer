@@ -2,12 +2,12 @@ require 'rails_helper'
 
 describe Agreement do
 	context "validations" do
-		it "is valid with proper values" do    
-			expect(FactoryGirl.build(:agreement)).to be_valid
+		it "is valid with proper values" do
+			expect(build(:agreement)).to be_valid
 		end
 
 		it "is not valid without a name" do
-			expect(FactoryGirl.build(:agreement, :name => nil)).to_not be_valid
+			expect(build(:agreement, :name => nil)).to_not be_valid
 		end
   	end
 
