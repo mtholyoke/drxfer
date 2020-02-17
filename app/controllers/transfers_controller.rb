@@ -41,7 +41,7 @@ class TransfersController < ApplicationController
   def create
     @agreement = Agreement.find(params[:agreement_id])
     @transfer = Transfer.new(transfer_params)
-    
+
     @transfer.agreement = @agreement
     @transfer.user = current_user
     @transfer.username = current_user.username
@@ -50,7 +50,7 @@ class TransfersController < ApplicationController
     @transfer.last_name = current_user.last_name
 
     respond_to do |format|
-      if @transfer.save  
+      if @transfer.save
         UserMailer.transfer_confirmation(@transfer).deliver_now
         UserMailer.transfer_notification(@transfer).deliver_now
         format.html { redirect_to([@agreement, @transfer], :notice => 'Transfer was successfully created.') }
@@ -65,6 +65,6 @@ class TransfersController < ApplicationController
   private
 
   def transfer_params
-      params.require(:transfer).permit(:description, :username, :email, :first_name, :last_name, :user, attachments_attributes: Attachment.attribute_names.map(&:to_sym))  
+      params.require(:transfer).permit(:description, :username, :email, :first_name, :last_name, :user, {attachments_attributes: Attachment.attribute_names.map(&:to_sym)})  
   end
 end
