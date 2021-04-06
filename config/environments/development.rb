@@ -52,8 +52,14 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  config.transfer_destination_base_path = Rails.root.to_s + '/'+ 'public' + '/'+ 'uploads'
+  config.transfer_destination_base_path_description = 'the <code>public/uploads</code> folder.'
+
   # Enable the console in a VM-based dev environment
   if Rails.env.development? && ENV.key?('VM_HOST_ADDRESS')
     config.web_console.whitelisted_ips = ENV['VM_HOST_ADDRESS']
   end
+
+  config.email_notification_from_address = 'drxfer@example.com'
+  config.transfer_notification_recipient_addresses = ['drxfer.admin@example.com']
 end
