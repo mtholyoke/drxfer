@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 5.2.3'
+gem 'rails', '~> 5.2.5'
 gem 'rake', '12.1.0'
 
 gem 'pg'
