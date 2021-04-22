@@ -40,6 +40,25 @@ class TransfersController < ApplicationController
   # POST /transfers.xml
   def create
     @agreement = Agreement.find(params[:agreement_id])
+
+    # In addition to the fact that each transfer can have multiple attachments
+    # Each attachment may be submitted with multiple assets (thanks to the useful
+    # multiple-selection functionality in _attachment_fields.html.erb). But our 
+    # model only allows one asset per attachment, so we need to flatten out things
+    # out by replacing the attachments_attributes portion of the params hash with
+    # a new one. 
+    if attachments = params[:transfer][:attachments_attributes]
+      flattened_attachments = {}
+      asset_num = 0
+      attachments.each do |attachment|
+        attachment_key = attachment.first
+        attachments[attachment_key][:asset].each do |asset|
+          flattened_attachments[asset_num.to_s] = {asset: asset}
+          asset_num += 1
+        end
+      end
+      params[:transfer][:attachments_attributes] = flattened_attachments
+    end
     @transfer = Transfer.new(transfer_params)
 
     @transfer.agreement = @agreement
@@ -65,6 +84,14 @@ class TransfersController < ApplicationController
   private
 
   def transfer_params
-      params.require(:transfer).permit(:description, :username, :email, :first_name, :last_name, :user, {attachments_attributes: Attachment.attribute_names.map(&:to_sym)})  
+      params.require(:transfer).permit(
+        :description,
+        :username,
+        :email,
+        :first_name,
+        :last_name,
+        :user,
+        attachments_attributes: [:asset, :_destroy]
+      )  
   end
 end
