@@ -19,7 +19,7 @@ FactoryBot.define do
 	end
 
 	factory :attachment do
-		asset { [Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/files/test_file.txt')))] }
+		asset { Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/files/test_file.txt'))) }
 		transfer_id { 1 }
 	end
 
