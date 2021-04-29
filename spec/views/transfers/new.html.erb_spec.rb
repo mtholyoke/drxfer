@@ -14,7 +14,7 @@ describe "transfers/new.html.erb" do
   end
 
   it "renders new transfer form" do
-    render template: 'transfers/new.html.erb', agreement: @agreement, agreement_id: 1
+    render template: 'transfers/new.html.erb', agreement: @agreement, transfer: @transfer, agreement_id: 1
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form", :action => agreement_transfers_path(1), :method => "post" do
       assert_select "a.add_fields[data-association='attachment']" 
