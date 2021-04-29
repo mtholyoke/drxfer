@@ -50,4 +50,6 @@ Rails.application.configure do
 
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
+  config.email_notification_from_address = 'drxfer@example.com'
+  config.transfer_notification_recipient_addresses = ['drxfer.admin@example.com']
 end

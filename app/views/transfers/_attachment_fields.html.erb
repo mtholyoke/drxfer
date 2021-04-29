@@ -1,4 +1,4 @@
 <p class="nested-fields">
-	<%= f.file_field :asset, :required => 'required' %>
+	<%= f.file_field :asset, required: 'required', multiple: true %>
 	<%= link_to_remove_association "Remove this file", f %>
 </p>
