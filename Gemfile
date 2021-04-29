@@ -16,7 +16,7 @@ gem 'capistrano', "~> 2.14.2"
 
 gem 'exception_notification', "~> 4.0.0"
 
-gem 'json', '~> 2.2.0'
+gem 'json', '~> 2.3.0'
 
 # for nested forms
 gem "cocoon", '~> 1.2.14'
