@@ -3,7 +3,7 @@ require 'fileutils'
 
 class Attachment < ActiveRecord::Base
   belongs_to :transfer
-  mount_uploaders :asset, AttachmentUploader
+  mount_uploader :asset, AttachmentUploader
 
   validates_presence_of :asset
   before_save :check_for_asset, :update_asset_attributes, :calculate_md5_hash, :transfer_file

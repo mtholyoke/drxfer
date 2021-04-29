@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '~> 5.2.5'
-gem 'rake', '12.1.0'
+gem 'rake', '12.3.3'
 
 gem 'pg'
 
@@ -16,7 +16,7 @@ gem 'capistrano', "~> 2.14.2"
 
 gem 'exception_notification', "~> 4.0.0"
 
-gem 'json', '~> 2.2.0'
+gem 'json', '~> 2.3.0'
 
 # for nested forms
 gem "cocoon", '~> 1.2.14'
