@@ -14,7 +14,11 @@ class Folder < ActiveRecord::Base
   default_scope  { order(:name => :asc) }
 
   def name_with_description
-    name + ' (' + description + ')'
+    if description.nil?
+      name
+    else
+      name + ' (' + description + ')'
+    end
   end
 
   # Remove leading and trailing slashes and whitespace
