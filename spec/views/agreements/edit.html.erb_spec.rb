@@ -7,7 +7,7 @@ describe "agreements/edit.html.erb" do
   end
 
   it "renders the edit agreement form" do
-    render
+    render template: 'agreements/edit', format: [:html]
 
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form", :action => agreements_path(@agreement), :method => "post" do

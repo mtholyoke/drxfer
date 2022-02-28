@@ -8,7 +8,8 @@ describe "agreements/show.html.erb" do
   end
 
   it "renders attributes in <p>" do
-    render
+    render template: 'agreements/show', format: [:html]
+
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     expect(rendered).to match(/Name/)
   end

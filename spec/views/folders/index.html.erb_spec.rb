@@ -17,7 +17,7 @@ describe "folders/index.html.erb" do
   end
 
   it "renders a list of folders" do
-    render
+    render template: 'folders/index', format: [:html]
 
     expect(rendered).to include("Name")
     expect(rendered).to include("Name2")

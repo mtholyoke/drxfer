@@ -10,7 +10,7 @@ describe "folders/edit.html.erb" do
   end
 
   it "renders the edit folder form" do
-    render
+    render template: 'folders/edit', format: [:html]
 
     assert_select "form", :action => folders_path(@folder), :method => "post" do
       assert_select "input#folder_name", :name => "folder[name]"

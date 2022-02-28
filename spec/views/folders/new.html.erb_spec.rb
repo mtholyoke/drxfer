@@ -10,7 +10,7 @@ describe "folders/new.html.erb" do
   end
 
   it "renders new folder form" do
-    render
+    render template: 'folders/new', format: [:html]
 
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form", :action => folders_path, :method => "post" do

@@ -11,7 +11,7 @@ describe "home/index.html.erb" do
   end
 
   it "renders a list of transfers" do
-    render
+    render template: 'home/index', format: [:html]
     expect(rendered).to include("Name")
   end
 end
