@@ -10,24 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_03_200143) do
-
+ActiveRecord::Schema[7.0].define(version: 2020_02_03_200143) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "agreements", id: :serial, force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.integer "folder_id"
   end
 
   create_table "assignments", id: :serial, force: :cascade do |t|
     t.integer "agreement_id"
     t.integer "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
   end
 
   create_table "attachments", id: :serial, force: :cascade do |t|
@@ -35,8 +34,8 @@ ActiveRecord::Schema.define(version: 2020_02_03_200143) do
     t.string "asset"
     t.string "content_type"
     t.integer "file_size"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.string "md5"
   end
 
@@ -44,15 +43,15 @@ ActiveRecord::Schema.define(version: 2020_02_03_200143) do
     t.string "path"
     t.string "name", limit: 16
     t.text "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
   end
 
   create_table "transfers", id: :serial, force: :cascade do |t|
     t.integer "agreement_id"
     t.text "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.integer "user_id"
     t.string "username"
     t.string "email"
@@ -66,12 +65,12 @@ ActiveRecord::Schema.define(version: 2020_02_03_200143) do
     t.string "first_name"
     t.string "last_name"
     t.integer "sign_in_count", default: 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
+    t.datetime "current_sign_in_at", precision: nil
+    t.datetime "last_sign_in_at", precision: nil
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
