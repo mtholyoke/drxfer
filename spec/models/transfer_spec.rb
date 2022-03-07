@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe Transfer do
-  context "validations" do
-  		it { should accept_nested_attributes_for(:attachments) }
+	context "validations" do
+		it { should accept_nested_attributes_for(:attachments) }
 		it { should validate_presence_of(:agreement) }
 		it { should validate_presence_of(:user) }
 		it { should validate_presence_of(:description) }

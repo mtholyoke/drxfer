@@ -8,7 +8,7 @@ describe AgreementsController do
 
   describe "GET index" do
     it "assigns all agreements as @agreements" do
-      agreement = Agreement.create! attributes_for(:agreement)
+      agreement = create(:agreement)
       get :index
       expect(assigns(:agreements)).to eq([agreement])
     end
@@ -16,7 +16,7 @@ describe AgreementsController do
 
   describe "GET show" do
     it "assigns the requested agreement as @agreement" do
-      agreement = Agreement.create! attributes_for(:agreement)
+      agreement = create(:agreement)
       get :show, params: { :id => agreement.id.to_s }
       expect(assigns(:agreement)).to eq(agreement)
     end
@@ -31,7 +31,7 @@ describe AgreementsController do
 
   describe "GET edit" do
     it "assigns the requested agreement as @agreement" do
-      agreement = Agreement.create! attributes_for(:agreement)
+      agreement = create(:agreement)
       get :edit, params: { :id => agreement.id.to_s }
       expect(assigns(:agreement)).to eq(agreement)
     end
@@ -41,18 +41,18 @@ describe AgreementsController do
     context "with valid params" do
       it "creates a new Agreement" do
         expect {
-          post :create, params: { :agreement => attributes_for(:agreement) }
+          post :create, params: { :agreement => attributes_for(:agreement).merge(folder_id: create(:folder)) }
         }.to change(Agreement, :count).by(1)
       end
 
       it "assigns a newly created agreement as @agreement" do
-        post :create, params: { :agreement => attributes_for(:agreement) }
+        post :create, params: { :agreement => attributes_for(:agreement).merge(folder_id: create(:folder)) }
         expect(assigns(:agreement)).to be_a(Agreement)
         expect(assigns(:agreement)).to be_persisted
       end
 
       it "redirects to the created agreement" do
-        post :create, params: { :agreement => attributes_for(:agreement) }
+        post :create, params: { :agreement => attributes_for(:agreement).merge(folder_id: create(:folder)) }
         expect(response).to redirect_to(Agreement.last)
       end
     end
@@ -75,20 +75,20 @@ describe AgreementsController do
   describe "PUT update" do
     context "with valid params" do
       it "updates the requested agreement" do
-        agreement = Agreement.create! attributes_for(:agreement)
+        agreement = create(:agreement)
         put :update, params: { :id => agreement.id.to_s, :agreement => { name: "New name" } }
         agreement.reload
         expect(agreement).to have_attributes(:name => "New name")
       end
 
       it "assigns the requested agreement as @agreement" do
-        agreement = Agreement.create! attributes_for(:agreement)
+        agreement = create(:agreement)
         put :update, params: { :id => agreement.id.to_s, :agreement => { name: "New name" } }
         expect(assigns(:agreement)).to eq(agreement)
       end
 
       it "redirects to the agreement" do
-        agreement = Agreement.create! attributes_for(:agreement)
+        agreement = create(:agreement)
         put :update, params: { :id => agreement.id.to_s, :agreement => { name: "New name" } }
         expect(response).to redirect_to(agreement)
       end
@@ -96,13 +96,13 @@ describe AgreementsController do
 
     context "with invalid params" do
       it "assigns the agreement as @agreement" do
-        agreement = Agreement.create! attributes_for(:agreement)
+        agreement = create(:agreement)
         put :update, params: { :id => agreement.id.to_s, :agreement => { :name => "" } }
         expect(assigns(:agreement)).to eq(agreement)
       end
 
       it "re-renders the 'edit' template" do
-        agreement = Agreement.create! attributes_for(:agreement)
+        agreement = create(:agreement)
         put :update, params: { :id => agreement.id.to_s, :agreement => { :name => "" } }
         expect(response).to render_template("edit")
       end
@@ -111,14 +111,14 @@ describe AgreementsController do
 
   describe "DELETE destroy" do
     it "destroys the requested agreement" do
-      agreement = Agreement.create! attributes_for(:agreement)
+      agreement = create(:agreement)
       expect {
         delete :destroy, params: { :id => agreement.id.to_s }
       }.to change(Agreement, :count).by(-1)
     end
 
     it "redirects to the agreements list" do
-      agreement = Agreement.create! attributes_for(:agreement)
+      agreement = create(:agreement)
       delete :destroy, params: { :id => agreement.id.to_s }
       expect(response).to redirect_to(agreements_url)
     end

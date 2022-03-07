@@ -95,7 +95,7 @@ describe FoldersController do
         folder = Folder.create! attributes_for(:folder)
         # Assuming there are no other folders in the database, this
         # specifies that the Folder created on the previous line
-        # receives the :update_attributes message with whatever params are
+        # receives the :update message with whatever params are
         # submitted in the request.
         put :update, params: { :id => folder.id, :folder => {'name' => 'New Name'} }
         folder.reload

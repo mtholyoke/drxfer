@@ -15,23 +15,25 @@ FactoryBot.define do
 
 	factory :folder do
 		path { "path/to/test" }
-	    name { "Test Folder" }
+		name { "Test folder" }
 	end
 
 	factory :attachment do
 		asset { Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/files/test_file.txt'))) }
-		transfer_id { 1 }
+		# transfer_id { 1 }
+		association :transfer
 	end
 
 	factory :agreement do
 		name { "Test agreement" }
+		association :folder
 	end
 
 	factory :transfer do
-        description { 'Description example' }
-        username { 'example_username' }
-        email { 'test@example.com' }
-        first_name { 'Mister' }
-        last_name { 'Example' }
+		description { 'Description example' }
+		username { 'example_username' }
+		email { 'test@example.com' }
+		first_name { 'Mister' }
+		last_name { 'Example' }
 	end
 end

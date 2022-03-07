@@ -14,6 +14,7 @@ config/initializers/notifications.rb
 config/ldap.yml
 db/*.sqlite3
 log/*.log
+public/assets/*
 public/uploads/*
 tmp/
-transfers
+/transfers

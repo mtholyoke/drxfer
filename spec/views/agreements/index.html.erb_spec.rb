@@ -7,7 +7,7 @@ describe "agreements/index.html.erb" do
   end
 
   it "renders a list of agreements" do
-    render
+    render template: 'agreements/index', format: [:html]
     expect(rendered).to include(@agreement.name)
   end
 

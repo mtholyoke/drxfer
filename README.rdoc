@@ -16,6 +16,17 @@ You will need to create at least the following config files:
 
 * config/initializers/notifications.rb
 
+== Operation
+
+The three basic units in the app are Users, Folders, and Agreements, which can be managed though the web UI by admin users.
+
+* *Users* use LDAP for authentication
+
+* *Folders* are where uploads are stored, configured as +transfer_destination_base_path+ in +config/environments/*.rb+
+
+* *Agreements* specify which Users can upload things to which Folders.
+
+
 == Branches
 
 This application was developed in Ruby 1.9.2-p290 with Rails 3.1.12. A working copy of that code is saved in the *rails3.1* branch.
@@ -26,7 +37,7 @@ The *rails4.2* branch ran in an environment with Ruby 2.2.2-p95 and Rails 4.2.9.
 
 The *rails5.1* branch ran in an environment with Ruby 2.4.2-p198 and Rails 5.1.4.
 
-== Dependency Status {<img src="https://gemnasium.com/svenaas/drxfer.png?travis"/>}[https://gemnasium.com/svenaas/drxfer]
+The *rails5.2* branch ran in an environment with Ruby 2.4.2-p198 and Rails 5.2.5.
 
 == License
 

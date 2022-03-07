@@ -10,7 +10,7 @@ describe "agreements/new.html.erb" do
   end
 
   it "renders new agreement form" do
-    render
+    render template: 'agreements/new', format: [:html]
 
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form", :action => agreements_path, :method => "post" do
