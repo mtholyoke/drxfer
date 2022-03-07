@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 gem 'rails', '~> 7.0'
 gem 'rake', '~> 13.0.6'
@@ -16,6 +16,8 @@ gem 'nokogiri', '~> 1.13.3'
 gem 'capistrano', "~> 3.16.0"
 
 gem 'exception_notification', "~> 4.5.0"
+# Remove once https://github.com/ruby/net-protocol/issues/10 is fixed
+gem 'net-protocol', '0.1.1'
 
 gem 'json', '~> 2.6.1'
 
