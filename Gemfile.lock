@@ -163,7 +163,7 @@ GEM
       net-protocol
       strscan
     net-ldap (0.17.0)
-    net-pop (0.1.1)
+    net-pop (0.1.2)
       digest
       net-protocol
       timeout

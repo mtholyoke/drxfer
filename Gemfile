@@ -16,8 +16,6 @@ gem 'nokogiri', '~> 1.13.3'
 gem 'capistrano', "~> 3.16.0"
 
 gem 'exception_notification', "~> 4.5.0"
-# Remove once https://github.com/ruby/net-protocol/issues/10 is fixed
-gem 'net-protocol', '0.1.1'
 
 gem 'json', '~> 2.6.1'
 
