@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_many :transfers
   has_many :agreements, :through => :assignments
 
+  validate :both_names_cannot_be_blank
+
   # before_save :get_ldap_data
 
   default_scope  { order(:admin => :desc, :last_name => :asc, :first_name => :asc) }
@@ -23,7 +25,19 @@ class User < ActiveRecord::Base
   #   end
   # end
 
+  def both_names_cannot_be_blank
+    if first_name.blank? && last_name.blank?
+      errors.add(:base, "must have a first name and/or last name")
+    end
+  end
+
   def full_name
-    first_name + ' ' + last_name
+    if first_name.blank?
+      last_name
+    elsif last_name.blank?
+      first_name
+    else
+      first_name + ' ' + last_name
+    end
   end
 end
