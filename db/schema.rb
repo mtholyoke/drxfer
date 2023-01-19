@@ -11,10 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2020_02_03_200143) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "agreements", id: :serial, force: :cascade do |t|
+  create_table "agreements", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", precision: nil
@@ -22,14 +19,14 @@ ActiveRecord::Schema[7.0].define(version: 2020_02_03_200143) do
     t.integer "folder_id"
   end
 
-  create_table "assignments", id: :serial, force: :cascade do |t|
+  create_table "assignments", force: :cascade do |t|
     t.integer "agreement_id"
     t.integer "user_id"
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
   end
 
-  create_table "attachments", id: :serial, force: :cascade do |t|
+  create_table "attachments", force: :cascade do |t|
     t.integer "transfer_id"
     t.string "asset"
     t.string "content_type"
@@ -39,7 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2020_02_03_200143) do
     t.string "md5"
   end
 
-  create_table "folders", id: :serial, force: :cascade do |t|
+  create_table "folders", force: :cascade do |t|
     t.string "path"
     t.string "name", limit: 16
     t.text "description"
@@ -47,7 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2020_02_03_200143) do
     t.datetime "updated_at", precision: nil
   end
 
-  create_table "transfers", id: :serial, force: :cascade do |t|
+  create_table "transfers", force: :cascade do |t|
     t.integer "agreement_id"
     t.text "description"
     t.datetime "created_at", precision: nil
@@ -59,7 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2020_02_03_200143) do
     t.string "last_name"
   end
 
-  create_table "users", id: :serial, force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
     t.string "first_name"
