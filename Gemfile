@@ -11,7 +11,7 @@ gem "devise_ldap_authenticatable", "~> 0.8.7"
 gem 'passenger', '~> 5.3.2', require: 'phusion_passenger/rack_handler'
 
 gem 'carrierwave', '~> 2.2.2'
-gem 'nokogiri', '~> 1.13.10'
+gem 'nokogiri', '~> 1.14.3'
 
 gem 'capistrano', "~> 3.16.0"
 
